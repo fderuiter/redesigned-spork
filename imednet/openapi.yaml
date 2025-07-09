@@ -6,13 +6,33 @@ info:
     Swagger specification for the iMednet EDC REST API derived from
     the SDK documentation. The API exposes clinical study resources
     via JSON. Requests require `x-api-key` and `x-imn-security-key`
-    headers for authentication.
+    headers for authentication. API keys should remain private.
+    Example request using ``curl``::
+
+      curl -X GET https://edc.prod.imednetapi.com/api/v1/edc/studies/STUDYKEY/sites \
+        -H 'x-api-key: XXXXXXXX' \
+        -H 'x-imn-security-key: XXX-XXX-XX-XXXXXX' \
+        -H 'Content-Type: application/json'
+    
+    Results may be filtered using query parameters. A ``filter`` string
+    accepts attribute/operator/value pairs such as ``formId>10`` and
+    ``formType==SUBJECT`` combined with ``and``/``;`` or ``or``/``,``, while
+    ``recordDataFilter`` applies to dynamic question data. Supported
+    operators include ``<``, ``<=``, ``>``, ``>=``, ``==`` and ``!=``. Dates
+    use UTC timestamps like ``YYYY-MM-DDTHH:MM:SSZ``.
 servers:
   - url: https://edc.prod.imednetapi.com/api/v1/edc
+security:
+  - ApiKey: []
+    ImnSecurityKey: []
 paths:
   /studies:
     get:
       summary: List studies
+      description: |
+        Returns metadata for studies the API key can access.
+        Filter attributes: ``studyKey``, ``studyType``, ``studyName``,
+        ``dateCreated`` and ``dateModified``.
       operationId: listStudies
       parameters:
         - in: query
@@ -45,6 +65,7 @@ paths:
   /studies/{studyKey}:
     get:
       summary: Retrieve a study
+      description: Return metadata for the specified study.
       operationId: getStudy
       parameters:
         - in: path
@@ -62,6 +83,10 @@ paths:
   /studies/{studyKey}/forms:
     get:
       summary: List forms
+      description: |
+        Returns the design specifications for eCRFs in the study.
+        Filter attributes: ``formId``, ``formKey``, ``formName``,
+        ``formType``, ``dateCreated`` and ``dateModified``.
       operationId: listForms
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -79,6 +104,11 @@ paths:
   /studies/{studyKey}/variables:
     get:
       summary: List variables
+      description: |
+        Retrieves variables representing eCRF fields for the study.
+        Filter attributes: ``variableId``, ``variableType``, ``variableName``,
+        ``dateCreated``, ``dateModified``, ``formId``, ``formKey``,
+        ``formName`` and ``label``.
       operationId: listVariables
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -96,6 +126,10 @@ paths:
   /studies/{studyKey}/intervals:
     get:
       summary: List intervals
+      description: |
+        Lists scheduled intervals or visits defined for the study.
+        Filter attributes: ``intervalId``, ``intervalName``, ``intervalGroupId``,
+        ``intervalGroupName``, ``dateCreated`` and ``dateModified``.
       operationId: listIntervals
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -113,6 +147,10 @@ paths:
   /studies/{studyKey}/sites:
     get:
       summary: List sites
+      description: |
+        Returns the set of sites participating in the study.
+        Filter attributes: ``siteId``, ``siteName``, ``siteEnrollmentStatus``,
+        ``dateCreated`` and ``dateModified``.
       operationId: listSites
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -130,6 +168,7 @@ paths:
   /studies/{studyKey}/subjects:
     get:
       summary: List subjects
+      description: Returns all subjects enrolled in the study.
       operationId: listSubjects
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -147,6 +186,11 @@ paths:
   /studies/{studyKey}/records:
     get:
       summary: List records
+      description: |
+        Returns eCRF record instances for the study.
+        Filter attributes: ``intervalId``, ``formId``, ``formKey``, ``siteId``,
+        ``recordId``, ``parentRecordId``, ``recordType``, ``recordStatus``,
+        ``subjectKey``, ``dateCreated`` and ``dateModified``.
       operationId: listRecords
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -156,6 +200,12 @@ paths:
         - $ref: '#/components/parameters/filterParam'
         - in: query
           name: recordDataFilter
+          description: |
+            Search criteria for values within ``recordData``. Supports the
+            same operators as ``filter`` with the addition of ``=~`` for
+            case-insensitive contains. Separate multiple conditions with
+            ``;`` for AND or ``,`` for OR but do not mix both connectors in
+            one request.
           schema:
             type: string
       responses:
@@ -167,6 +217,7 @@ paths:
                 $ref: '#/components/schemas/PaginatedRecordList'
     post:
       summary: Create records
+      description: Adds new records and returns a job for asynchronous processing.
       operationId: createRecords
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -188,6 +239,11 @@ paths:
   /studies/{studyKey}/recordRevisions:
     get:
       summary: List record revisions
+      description: |
+        Returns revision history for records in the study.
+        Filter attributes: ``recordRevisionId``, ``recordId``, ``recordOid``,
+        ``recordRevision``, ``dataRevision``, ``recordStatus``, ``user``,
+        ``reasonForChange`` and ``dateCreated``.
       operationId: listRecordRevisions
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -205,6 +261,11 @@ paths:
   /studies/{studyKey}/codings:
     get:
       summary: List codings
+      description: |
+        Returns medical coding history entries for the study.
+        Filter attributes: ``siteId``, ``subjectId``, ``formId``, ``recordId``,
+        ``revision``, ``variable``, ``value``, ``code``, ``codedBy``, ``reason``,
+        ``dictionaryName``, ``dictionaryVersion`` and ``dateCoded``.
       operationId: listCodings
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -222,6 +283,7 @@ paths:
   /studies/{studyKey}/queries:
     get:
       summary: List queries
+      description: Returns queries associated with the study.
       operationId: listQueries
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -239,6 +301,11 @@ paths:
   /studies/{studyKey}/visits:
     get:
       summary: List visits
+      description: |
+        Returns visit data for subjects in the study.
+        Filter attributes: ``intervalId``, ``intervalName``, ``intervalGroupId``,
+        ``intervalGroupName``, ``startDate``, ``endDate``, ``dueDate``,
+        ``visitDate``, ``dateCreated`` and ``dateModified``.
       operationId: listVisits
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -256,6 +323,7 @@ paths:
   /studies/{studyKey}/users:
     get:
       summary: List users
+      description: Returns users associated with the study.
       operationId: listUsers
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -277,6 +345,7 @@ paths:
   /studies/{studyKey}/jobs/{batchId}:
     get:
       summary: Retrieve job status
+      description: Checks the status of a record import job.
       operationId: getJob
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -293,6 +362,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/JobStatus'
 components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+    ImnSecurityKey:
+      type: apiKey
+      in: header
+      name: x-imn-security-key
   parameters:
     studyKey:
       in: path
@@ -313,16 +391,24 @@ components:
         type: integer
         default: 25
         maximum: 500
-    sortParam:
-      in: query
-      name: sort
-      schema:
-        type: string
-    filterParam:
-      in: query
-      name: filter
-      schema:
-        type: string
+  sortParam:
+    in: query
+    name: sort
+    schema:
+      type: string
+  filterParam:
+    in: query
+    name: filter
+    description: |
+      Filter criteria in ``attribute<operator>value`` form. Attributes
+      must match the response fields for the endpoint. Combine multiple
+      expressions using ``and`` or ``;`` for logical AND and ``or`` or
+      ``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,
+      ``>=``, ``==`` and ``!=``. Dates should be formatted as
+      ``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within
+      the ``recordData`` payload of a record.
+    schema:
+      type: string
   schemas:
     Metadata:
       type: object
