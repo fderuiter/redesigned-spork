@@ -1,0 +1,38 @@
+name: OpenAPI client generation
+
+on:
+  workflow_call:
+    inputs:
+      language:
+        required: true
+        type: string
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache build tools
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.npm
+            ~/.cargo/registry
+            ~/.gem
+          key: ${{ runner.os }}-${{ inputs.language }}-client-gen
+
+      - name: Install openapi-generator-cli
+        uses: OpenAPITools/openapi-generator-cli@v1
+
+      - name: Generate ${{ inputs.language }} client
+        run: |
+          openapi-generator-cli generate -g ${{ inputs.language }} -i imednet/openapi.yaml -o clients/${{ inputs.language }}
+
+      - name: Upload generated client
+        uses: actions/upload-artifact@v3
+        with:
+          name: client-${{ inputs.language }}
+          path: clients/${{ inputs.language }}
+
