@@ -487,24 +487,24 @@ components:
         type: integer
         default: 25
         maximum: 500
-  sortParam:
-    in: query
-    name: sort
-    schema:
-      type: string
-  filterParam:
-    in: query
-    name: filter
-    description: |
-      Filter criteria in ``attribute<operator>value`` form. Attributes
-      must match the response fields for the endpoint. Combine multiple
-      expressions using ``and`` or ``;`` for logical AND and ``or`` or
-      ``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,
-      ``>=``, ``==`` and ``!=``. Dates should be formatted as
-      ``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within
-      the ``recordData`` payload of a record.
-    schema:
-      type: string
+    sortParam:
+      in: query
+      name: sort
+      schema:
+        type: string
+    filterParam:
+      in: query
+      name: filter
+      description: |
+        Filter criteria in ``attribute<operator>value`` form. Attributes
+        must match the response fields for the endpoint. Combine multiple
+        expressions using ``and`` or ``;`` for logical AND and ``or`` or
+        ``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,
+        ``>=``, ``==`` and ``!=``. Dates should be formatted as
+        ``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within
+        the ``recordData`` payload of a record.
+      schema:
+        type: string
   responses:
     ErrorResponse:
       description: Error information when the request fails
