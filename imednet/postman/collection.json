@@ -1,7 +1,7 @@
 {
     "item": [
         {
-            "id": "7f4429d2-0315-4d13-b695-cafb6f01eb94",
+            "id": "6f3b81db-a46c-4f5c-9059-647d4123c971",
             "name": "List studies",
             "request": {
                 "name": "List studies",
@@ -68,7 +68,7 @@
             },
             "response": [
                 {
-                    "id": "01304a11-6682-4aae-b923-3ec75f01578d",
+                    "id": "10e0bbc2-5937-47dd-97bc-063190a7c619",
                     "name": "List of studies",
                     "originalRequest": {
                         "url": {
@@ -122,14 +122,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -143,12 +135,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9001\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"sponsorKey\": \"<string>\",\n      \"studyKey\": \"<string>\",\n      \"studyId\": \"<integer>\",\n      \"studyName\": \"<string>\",\n      \"studyDescription\": \"<string>\",\n      \"studyType\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"sponsorKey\": \"<string>\",\n      \"studyKey\": \"<string>\",\n      \"studyId\": \"<integer>\",\n      \"studyName\": \"<string>\",\n      \"studyDescription\": \"<string>\",\n      \"studyType\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
+                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"sponsorKey\": \"<string>\",\n      \"studyKey\": \"<string>\",\n      \"studyId\": \"<integer>\",\n      \"studyName\": \"<string>\",\n      \"studyDescription\": \"<string>\",\n      \"studyType\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"sponsorKey\": \"<string>\",\n      \"studyKey\": \"<string>\",\n      \"studyId\": \"<integer>\",\n      \"studyName\": \"<string>\",\n      \"studyDescription\": \"<string>\",\n      \"studyType\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "e4a4d00b-b2a2-4135-8e8c-294e07779639",
+                    "id": "fc9ff66b-bb7f-43c4-8f6c-22b6f98ff74c",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -202,101 +194,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "88298918-e4b9-447a-9459-7b52b110d89e",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "studyKey,asc"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -314,7 +218,7 @@
             }
         },
         {
-            "id": "1b94311d-a3bd-49c1-a77e-896a8dfdc702",
+            "id": "0417919d-b944-4167-8ecd-2cda627e24a4",
             "name": "Retrieve a study",
             "request": {
                 "name": "Retrieve a study",
@@ -356,7 +260,7 @@
             },
             "response": [
                 {
-                    "id": "52e82e0d-f793-42a2-a8f6-9d6abd5bb8d3",
+                    "id": "bf02ae96-dc2e-47d6-971a-38d0ce964a06",
                     "name": "Study information",
                     "originalRequest": {
                         "url": {
@@ -374,14 +278,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -400,7 +296,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "a30f451a-f445-4794-913a-709e37620802",
+                    "id": "65cd59bf-a57e-487f-94c1-37e26905b5d1",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -418,65 +314,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "6d9c8068-db49-4017-9c04-69bba75366ad",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -494,7 +338,7 @@
             }
         },
         {
-            "id": "089c7cea-9bf3-4c5c-839f-50d2a22235bf",
+            "id": "cb2dfb30-3bf2-43c2-8639-9394efec9d83",
             "name": "List forms",
             "request": {
                 "name": "List forms",
@@ -574,7 +418,7 @@
             },
             "response": [
                 {
-                    "id": "e1cf7492-6404-44dc-962f-a87e5c1325fb",
+                    "id": "7bbaa236-9ee5-408b-9e63-3390a1c23ad8",
                     "name": "List of forms",
                     "originalRequest": {
                         "url": {
@@ -630,14 +474,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -651,12 +487,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9001\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"formId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"formName\": \"<string>\",\n      \"formType\": \"<string>\",\n      \"revision\": \"<integer>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"formId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"formName\": \"<string>\",\n      \"formType\": \"<string>\",\n      \"revision\": \"<integer>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
+                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"1000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"formId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"formName\": \"<string>\",\n      \"formType\": \"<string>\",\n      \"revision\": \"<integer>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"formId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"formName\": \"<string>\",\n      \"formType\": \"<string>\",\n      \"revision\": \"<integer>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "876ad83f-823c-442c-bb66-b0ebdbd589cf",
+                    "id": "babcfff7-5cc9-443f-ad6c-d72e9f287b97",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -712,103 +548,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "b701593b-855e-4ccc-8552-91acb889ee2c",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "forms"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -826,7 +572,7 @@
             }
         },
         {
-            "id": "b4304cc2-f5f3-4af7-a533-6321c73df2dc",
+            "id": "175bcfc8-789c-42bb-8e91-0fae0f0de190",
             "name": "List variables",
             "request": {
                 "name": "List variables",
@@ -906,7 +652,7 @@
             },
             "response": [
                 {
-                    "id": "a9c56b44-38ee-4a23-9adc-8ca85d4a0fb8",
+                    "id": "d74b8581-a7df-465e-a0d1-9a0a9d3bdb53",
                     "name": "Variable list",
                     "originalRequest": {
                         "url": {
@@ -962,14 +708,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -988,7 +726,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "e7b46d6f-5efb-49f0-a301-f3a90fcc9a28",
+                    "id": "da3c8851-4b19-4447-aa53-50ce8c37a9e1",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -1044,103 +782,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "eb8f9852-a703-4755-94d4-e376630c9836",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "variables"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -1158,7 +806,7 @@
             }
         },
         {
-            "id": "bcd86f22-ebde-4e12-9bcc-da46ee87d464",
+            "id": "f1e28dba-85ac-4389-9fdf-8ebf6d979f9a",
             "name": "List intervals",
             "request": {
                 "name": "List intervals",
@@ -1238,7 +886,7 @@
             },
             "response": [
                 {
-                    "id": "8ae68f6f-e431-440c-b17f-fcada44ea1e2",
+                    "id": "108486f9-00f7-43b7-96d2-2df20e5770b6",
                     "name": "Interval list",
                     "originalRequest": {
                         "url": {
@@ -1294,14 +942,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -1320,7 +960,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "93c60bb2-b2c0-4723-8f2c-f8babbf5db85",
+                    "id": "f78cd641-4709-4a22-be4a-6cf426368f00",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -1376,103 +1016,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "372abbcc-e047-435a-bceb-3997e622ccb7",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "intervals"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -1490,7 +1040,7 @@
             }
         },
         {
-            "id": "0b7d7ff0-0b8c-4c07-935f-b67f3dfc5bcf",
+            "id": "d6f77055-116c-49aa-bf74-3d04794404a6",
             "name": "List sites",
             "request": {
                 "name": "List sites",
@@ -1570,7 +1120,7 @@
             },
             "response": [
                 {
-                    "id": "22b4be64-35fa-4d2d-81a4-6f3094ba82fd",
+                    "id": "dcc2c504-1ea4-43d9-a9c3-3b4c5daa0ee0",
                     "name": "Site list",
                     "originalRequest": {
                         "url": {
@@ -1626,14 +1176,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -1647,12 +1189,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"siteName\": \"<string>\",\n      \"siteEnrollmentStatus\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"siteName\": \"<string>\",\n      \"siteEnrollmentStatus\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
+                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"1000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"siteName\": \"<string>\",\n      \"siteEnrollmentStatus\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"siteName\": \"<string>\",\n      \"siteEnrollmentStatus\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "53e58c83-35ee-4996-9222-3cbe0a2a211a",
+                    "id": "1d36a033-e5cd-41a6-ab2a-f4049632da8b",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -1708,103 +1250,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "d1411593-34ed-4fff-9330-75c038e11590",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "sites"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -1822,7 +1274,7 @@
             }
         },
         {
-            "id": "deee573f-e9e2-4518-9440-9d75116402e9",
+            "id": "bf73db04-f4e0-4f5d-8b05-d7bc3f20c7cc",
             "name": "List subjects",
             "request": {
                 "name": "List subjects",
@@ -1902,7 +1354,7 @@
             },
             "response": [
                 {
-                    "id": "53a47abf-5a57-4bc4-b1ed-270d02bf263b",
+                    "id": "4438a2e5-18f5-45de-9eb0-acca1ee7c8a0",
                     "name": "Subject list",
                     "originalRequest": {
                         "url": {
@@ -1958,14 +1410,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -1984,7 +1428,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "d1af4ee6-435d-44b2-9686-63983404dbe3",
+                    "id": "4dc396ab-6f92-4e34-9e81-54e5b514deae",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -2040,103 +1484,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "fba63bd3-b2b3-4069-aac9-4e1a89d6b720",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "subjects"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -2154,7 +1508,7 @@
             }
         },
         {
-            "id": "6ece2b76-414e-4554-92df-4fb80b413095",
+            "id": "2f341981-71f0-4c3d-89da-e9adc202421c",
             "name": "List records",
             "request": {
                 "name": "List records",
@@ -2243,7 +1597,7 @@
             },
             "response": [
                 {
-                    "id": "760f5fb6-3d0a-44e5-bc9a-a85816efc543",
+                    "id": "4f5f8e41-ae5a-45eb-82dd-3e41aa181d8a",
                     "name": "Record list",
                     "originalRequest": {
                         "url": {
@@ -2308,14 +1662,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -2329,12 +1675,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"formId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"recordId\": \"<integer>\",\n      \"recordOid\": \"<string>\",\n      \"recordType\": \"<string>\",\n      \"recordStatus\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectOid\": \"<string>\",\n      \"subjectKey\": \"<string>\",\n      \"visitId\": \"<integer>\",\n      \"parentRecordId\": \"<integer>\",\n      \"recordData\": {}\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"formId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"recordId\": \"<integer>\",\n      \"recordOid\": \"<string>\",\n      \"recordType\": \"<string>\",\n      \"recordStatus\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectOid\": \"<string>\",\n      \"subjectKey\": \"<string>\",\n      \"visitId\": \"<integer>\",\n      \"parentRecordId\": \"<integer>\",\n      \"recordData\": {}\n    }\n  ]\n}",
+                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"1000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"formId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"recordId\": \"<integer>\",\n      \"recordOid\": \"<string>\",\n      \"recordType\": \"<string>\",\n      \"recordStatus\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectOid\": \"<string>\",\n      \"subjectKey\": \"<string>\",\n      \"visitId\": \"<integer>\",\n      \"parentRecordId\": \"<integer>\",\n      \"recordData\": {}\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"formId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"recordId\": \"<integer>\",\n      \"recordOid\": \"<string>\",\n      \"recordType\": \"<string>\",\n      \"recordStatus\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectOid\": \"<string>\",\n      \"subjectKey\": \"<string>\",\n      \"visitId\": \"<integer>\",\n      \"parentRecordId\": \"<integer>\",\n      \"recordData\": {}\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "df8899be-ac20-4612-904f-c9882c8f275a",
+                    "id": "f73f3995-11e8-4e68-bd82-9a46b865fd08",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -2399,112 +1745,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "24060216-e0d4-482b-8e97-c0b5d190cd21",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "records"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Search criteria for values within ``recordData``. Supports the\nsame operators as ``filter`` with the addition of ``=~`` for\ncase-insensitive contains. Separate multiple conditions with\n``;`` for AND or ``,`` for OR but do not mix both connectors in\none request.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "recordDataFilter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -2522,7 +1769,7 @@
             }
         },
         {
-            "id": "d5c9fc16-a148-417c-bc6a-de89afd77eec",
+            "id": "b0c818f6-2547-4777-8cb3-870ba698359d",
             "name": "Create records",
             "request": {
                 "name": "Create records",
@@ -2578,7 +1825,7 @@
             },
             "response": [
                 {
-                    "id": "65ae8510-5da7-4280-bc87-d0377bfd3361",
+                    "id": "7e63d5fa-1064-4b29-b061-bb283daa4327",
                     "name": "Job created",
                     "originalRequest": {
                         "url": {
@@ -2601,14 +1848,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "POST",
@@ -2636,7 +1875,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "37d5cc61-b411-492a-9770-6d9a05bf02c9",
+                    "id": "c4b74258-a750-406a-b636-864d3969c221",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -2659,14 +1898,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "POST",
@@ -2681,66 +1912,8 @@
                             }
                         }
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "a202bc31-086c-4fb6-9f1e-2ff47b717e66",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "records"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "POST",
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[\n  {\n    \"formKey\": \"<string>\",\n    \"subjectKey\": \"<string>\",\n    \"siteName\": \"<string>\",\n    \"intervalName\": \"<string>\",\n    \"data\": {}\n  },\n  {\n    \"formKey\": \"<string>\",\n    \"subjectKey\": \"<string>\",\n    \"siteName\": \"<string>\",\n    \"intervalName\": \"<string>\",\n    \"data\": {}\n  }\n]",
-                            "options": {
-                                "raw": {
-                                    "headerFamily": "json",
-                                    "language": "json"
-                                }
-                            }
-                        }
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -2758,7 +1931,7 @@
             }
         },
         {
-            "id": "efe870d8-4ec5-4c6e-b807-20c334a589be",
+            "id": "7b7e1b77-85ed-43f2-a98c-0d5d89b8a675",
             "name": "List record revisions",
             "request": {
                 "name": "List record revisions",
@@ -2838,7 +2011,7 @@
             },
             "response": [
                 {
-                    "id": "b7e7133d-0abe-4371-b095-a907f5236295",
+                    "id": "e9a73ec2-687e-42e3-85dc-95d49235f937",
                     "name": "Record revision list",
                     "originalRequest": {
                         "url": {
@@ -2894,14 +2067,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -2915,12 +2080,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9001\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"recordRevisionId\": \"<integer>\",\n      \"recordId\": \"<integer>\",\n      \"recordRevision\": \"<integer>\",\n      \"dataRevision\": \"<integer>\",\n      \"recordStatus\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\"\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"recordRevisionId\": \"<integer>\",\n      \"recordId\": \"<integer>\",\n      \"recordRevision\": \"<integer>\",\n      \"dataRevision\": \"<integer>\",\n      \"recordStatus\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\"\n    }\n  ]\n}",
+                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"1000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"recordRevisionId\": \"<integer>\",\n      \"recordId\": \"<integer>\",\n      \"recordRevision\": \"<integer>\",\n      \"dataRevision\": \"<integer>\",\n      \"recordStatus\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\"\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"recordRevisionId\": \"<integer>\",\n      \"recordId\": \"<integer>\",\n      \"recordRevision\": \"<integer>\",\n      \"dataRevision\": \"<integer>\",\n      \"recordStatus\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectKey\": \"<string>\",\n      \"siteId\": \"<integer>\",\n      \"formKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\"\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "a1ad7b0d-29a8-445e-b478-019fc7b5d9e7",
+                    "id": "2a2d605d-5427-4728-b437-692cd1d63748",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -2976,103 +2141,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "690e5eda-e1a0-4b59-a730-104dd2c65d3f",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "recordRevisions"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -3090,7 +2165,7 @@
             }
         },
         {
-            "id": "19afb6a7-5612-4915-a5b4-06950c605440",
+            "id": "06811a66-5350-4b81-9722-ed274819d4b5",
             "name": "List codings",
             "request": {
                 "name": "List codings",
@@ -3170,7 +2245,7 @@
             },
             "response": [
                 {
-                    "id": "121187af-683e-4fa0-90a4-4cbc7c74c0af",
+                    "id": "58c03cff-8625-4092-9d7d-9a88b6bd8e3f",
                     "name": "Coding list",
                     "originalRequest": {
                         "url": {
@@ -3226,14 +2301,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -3252,7 +2319,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "cec7c1de-d635-4f17-bf43-bec368a19fc1",
+                    "id": "e2919ca6-baea-4db3-aae4-b4039b561030",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -3308,103 +2375,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "be1d2ebb-adb8-43f3-89ad-16ae81426334",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "codings"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -3422,7 +2399,7 @@
             }
         },
         {
-            "id": "234325a5-a7b3-493c-859e-329316c1dd23",
+            "id": "34dea190-b8a2-4b11-8bb0-f146fe75223e",
             "name": "List queries",
             "request": {
                 "name": "List queries",
@@ -3502,7 +2479,7 @@
             },
             "response": [
                 {
-                    "id": "69c4ecdc-fa45-4c93-8b10-02770e63b8bb",
+                    "id": "bb12b0e5-9946-441b-bc75-7d9db70af38a",
                     "name": "Query list",
                     "originalRequest": {
                         "url": {
@@ -3558,14 +2535,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -3579,12 +2548,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"1000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"annotationId\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"recordId\": \"<integer>\",\n      \"variable\": \"<string>\",\n      \"subjectKey\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"annotationId\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"recordId\": \"<integer>\",\n      \"variable\": \"<string>\",\n      \"subjectKey\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
+                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9001\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"studyKey\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"annotationId\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"recordId\": \"<integer>\",\n      \"variable\": \"<string>\",\n      \"subjectKey\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"studyKey\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"annotationId\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"recordId\": \"<integer>\",\n      \"variable\": \"<string>\",\n      \"subjectKey\": \"<string>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "7bf401f0-b334-426a-9e24-043d1c6cb7e8",
+                    "id": "98ca6344-afbe-46fd-a4a9-7b579fcdd53d",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -3640,103 +2609,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "63a1a50c-bd75-4c90-9e29-e9659d47f7ab",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "queries"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -3754,7 +2633,7 @@
             }
         },
         {
-            "id": "0b40abdb-d8b6-40b1-9612-9a12785d6d8e",
+            "id": "7d559550-8242-496c-b086-80d1a9555b02",
             "name": "List visits",
             "request": {
                 "name": "List visits",
@@ -3834,7 +2713,7 @@
             },
             "response": [
                 {
-                    "id": "f6990bb4-c11d-47b2-b684-a713b087c796",
+                    "id": "dd78068e-e78d-4fc1-b4ec-9d6ed4a9e9f6",
                     "name": "Visit list",
                     "originalRequest": {
                         "url": {
@@ -3890,14 +2769,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -3911,12 +2782,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9001\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"visitId\": \"<integer>\",\n      \"studyKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"intervalName\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectKey\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"dueDate\": \"<string>\",\n      \"visitDate\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"visitId\": \"<integer>\",\n      \"studyKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"intervalName\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectKey\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"dueDate\": \"<string>\",\n      \"visitDate\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
+                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"1000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"visitId\": \"<integer>\",\n      \"studyKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"intervalName\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectKey\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"dueDate\": \"<string>\",\n      \"visitDate\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    },\n    {\n      \"visitId\": \"<integer>\",\n      \"studyKey\": \"<string>\",\n      \"intervalId\": \"<integer>\",\n      \"intervalName\": \"<string>\",\n      \"subjectId\": \"<integer>\",\n      \"subjectKey\": \"<string>\",\n      \"startDate\": \"<string>\",\n      \"endDate\": \"<string>\",\n      \"dueDate\": \"<string>\",\n      \"visitDate\": \"<string>\",\n      \"deleted\": \"<boolean>\",\n      \"dateCreated\": \"<string>\",\n      \"dateModified\": \"<string>\"\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "396ec814-8630-4a03-b492-021019da993f",
+                    "id": "1630e3a1-3aa0-4633-94c5-cc5546f0b005",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -3972,103 +2843,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "6f417897-6def-430d-bb2f-21cc107a25d9",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "visits"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "Filter criteria in ``attribute<operator>value`` form. Attributes\nmust match the response fields for the endpoint. Combine multiple\nexpressions using ``and`` or ``;`` for logical AND and ``or`` or\n``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,\n``>=``, ``==`` and ``!=``. Dates should be formatted as\n``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within\nthe ``recordData`` payload of a record.\n",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "filter",
-                                    "value": "<string>"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -4086,7 +2867,7 @@
             }
         },
         {
-            "id": "0aec9d45-2a31-4f8a-91ac-517cc020d8f6",
+            "id": "846e99ff-d249-494d-977b-35d1443d07a7",
             "name": "List users",
             "request": {
                 "name": "List users",
@@ -4166,7 +2947,7 @@
             },
             "response": [
                 {
-                    "id": "c231ae3e-f3a8-4591-b166-a46747023bc3",
+                    "id": "d46d67b5-8f07-492c-81b1-9a249fe8c623",
                     "name": "User list",
                     "originalRequest": {
                         "url": {
@@ -4222,14 +3003,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -4243,12 +3016,12 @@
                             "value": "application/json"
                         }
                     ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9001\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"userId\": \"<string>\",\n      \"login\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"userActiveInStudy\": \"<boolean>\"\n    },\n    {\n      \"userId\": \"<string>\",\n      \"login\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"userActiveInStudy\": \"<boolean>\"\n    }\n  ]\n}",
+                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  },\n  \"pagination\": {\n    \"currentPage\": \"<integer>\",\n    \"size\": \"<integer>\",\n    \"totalPages\": \"<integer>\",\n    \"totalElements\": \"<integer>\",\n    \"sort\": [\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      },\n      {\n        \"property\": \"<string>\",\n        \"direction\": \"<string>\"\n      }\n    ]\n  },\n  \"data\": [\n    {\n      \"userId\": \"<string>\",\n      \"login\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"userActiveInStudy\": \"<boolean>\"\n    },\n    {\n      \"userId\": \"<string>\",\n      \"login\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"userActiveInStudy\": \"<boolean>\"\n    }\n  ]\n}",
                     "cookie": [],
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "f18fad7b-dd36-41cd-afaa-e3767b60f454",
+                    "id": "7c4fd803-0732-4d00-9c47-deb3d4a4cfff",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -4304,103 +3077,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "c7176edd-f24d-4164-ac9f-bac8bdb5ca4c",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "users"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "page",
-                                    "value": "0"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "size",
-                                    "value": "25"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "sort",
-                                    "value": "<string>"
-                                },
-                                {
-                                    "disabled": false,
-                                    "description": {
-                                        "content": "",
-                                        "type": "text/plain"
-                                    },
-                                    "key": "includeInactive",
-                                    "value": "false"
-                                }
-                            ],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -4418,7 +3101,7 @@
             }
         },
         {
-            "id": "f339ff84-1b3d-459e-9bc9-42f0b9600bb8",
+            "id": "9787b019-fda5-4830-b0aa-0cb33bd86fd0",
             "name": "Retrieve job status",
             "request": {
                 "name": "Retrieve job status",
@@ -4472,7 +3155,7 @@
             },
             "response": [
                 {
-                    "id": "2e748943-f114-49f2-84a7-8f6bdce1f72a",
+                    "id": "6d389202-4527-478a-94b4-8d6527ad0f5c",
                     "name": "Job status",
                     "originalRequest": {
                         "url": {
@@ -4492,14 +3175,6 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
@@ -4518,7 +3193,7 @@
                     "_postman_previewlanguage": "json"
                 },
                 {
-                    "id": "0d72297b-b03a-4f50-9519-b5d923c3ff20",
+                    "id": "33d5f81e-0fe2-4236-b207-8325ed390c4b",
                     "name": "Error information when the request fails",
                     "originalRequest": {
                         "url": {
@@ -4538,67 +3213,13 @@
                             {
                                 "key": "Accept",
                                 "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
                             }
                         ],
                         "method": "GET",
                         "body": {}
                     },
-                    "status": "Bad Request",
-                    "code": 400,
-                    "header": [
-                        {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                        }
-                    ],
-                    "body": "{\n  \"metadata\": {\n    \"status\": \"<string>\",\n    \"method\": \"<string>\",\n    \"path\": \"<string>\",\n    \"timestamp\": \"<string>\",\n    \"error\": {\n      \"code\": \"9000\",\n      \"description\": \"<string>\",\n      \"field\": {\n        \"attribute\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    }\n  }\n}",
-                    "cookie": [],
-                    "_postman_previewlanguage": "json"
-                },
-                {
-                    "id": "66dca0ca-bb1a-449d-bd96-3e4a0599d447",
-                    "name": "Error information when the request fails",
-                    "originalRequest": {
-                        "url": {
-                            "path": [
-                                "studies",
-                                ":studyKey",
-                                "jobs",
-                                ":batchId"
-                            ],
-                            "host": [
-                                "{{baseUrl}}"
-                            ],
-                            "query": [],
-                            "variable": []
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json"
-                            },
-                            {
-                                "description": {
-                                    "content": "Added as a part of security scheme: apikey",
-                                    "type": "text/plain"
-                                },
-                                "key": "x-api-key",
-                                "value": "<API Key>"
-                            }
-                        ],
-                        "method": "GET",
-                        "body": {}
-                    },
-                    "status": "Unauthorized",
-                    "code": 401,
+                    "status": "Internal Server Error",
+                    "code": 500,
                     "header": [
                         {
                             "key": "Content-Type",
@@ -4616,26 +3237,6 @@
             }
         }
     ],
-    "auth": {
-        "type": "apikey",
-        "apikey": [
-            {
-                "type": "any",
-                "value": "x-api-key",
-                "key": "key"
-            },
-            {
-                "type": "any",
-                "value": "{{apiKey}}",
-                "key": "value"
-            },
-            {
-                "type": "any",
-                "value": "header",
-                "key": "in"
-            }
-        ]
-    },
     "event": [],
     "variable": [
         {
@@ -4644,11 +3245,11 @@
         }
     ],
     "info": {
-        "_postman_id": "fbf777bf-dffd-457b-9dd6-05aa15313e0c",
+        "_postman_id": "e9f9757c-04fa-4d9e-aefa-1a5d156e8016",
         "name": "iMednet EDC API",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
-            "content": "Swagger specification for the iMednet EDC REST API derived from\nthe SDK documentation. The API exposes clinical study resources\nvia JSON. Requests require `x-api-key` and `x-imn-security-key`\nheaders for authentication. API keys should remain private.\nExample request using ``curl``::\n\n  curl -X GET https://edc.prod.imednetapi.com/api/v1/edc/studies/STUDYKEY/sites \\\n    -H 'x-api-key: XXXXXXXX' \\\n    -H 'x-imn-security-key: XXX-XXX-XX-XXXXXX' \\\n    -H 'Content-Type: application/json'\n\nResults may be filtered using query parameters. A ``filter`` string\naccepts attribute/operator/value pairs such as ``formId>10`` and\n``formType==SUBJECT`` combined with ``and``/``;`` or ``or``/``,``, while\n``recordDataFilter`` applies to dynamic question data. Supported\noperators include ``<``, ``<=``, ``>``, ``>=``, ``==`` and ``!=``. Dates\nuse UTC timestamps like ``YYYY-MM-DDTHH:MM:SSZ``.\n",
+            "content": "Swagger specification for the iMednet EDC REST API derived from\nthe SDK documentation. The API exposes clinical study resources\nvia JSON.\n\n**Security and Validation**\n\nAPI keys should remain secure. Mednet does not recommend sharing\nkeys or making them public. Publicly exposing your credentials can\nresult in your account being compromised. Some implementation\ndecisions can expose keys and should be avoided wherever possible\n(e.g. CORS).\n\nMaking a successful request requires authentication using request\nheaders. Valid values for the `x-api-key` and `x-imn-security-key`\nheader attributes are required to ensure secure access to your\ndata. The content of your header might look something like the\nfollowing::\n\n  {\n      \"x-api-key\": \"your-imednet-supplied-api-key\",\n      \"x-imn-security-key\": \"your-imednet-supplied-security-key\"\n  }\n\nExample request using ``curl`` to request sites from STUDYKEY::\n\n  curl -X GET https://edc.prod.imednetapi.com/api/v1/edc/studies/STUDYKEY/sites \\\n    -H 'x-api-key: XXXXXXXX' \\\n    -H 'x-imn-security-key: XXX-XXX-XX-XXXXXX' \\\n    -H 'Content-Type: application/json'\n\nResults may be filtered using query parameters. A ``filter`` string\naccepts attribute/operator/value pairs such as ``formId>10`` and\n``formType==SUBJECT`` combined with ``and``/``;`` or ``or``/``,``, while\n``recordDataFilter`` applies to dynamic question data. Supported\noperators include ``<``, ``<=``, ``>``, ``>=``, ``==`` and ``!=``. Dates\nuse UTC timestamps like ``YYYY-MM-DDTHH:MM:SSZ``.\n",
             "type": "text/plain"
         }
     }
