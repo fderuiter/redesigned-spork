@@ -19,18 +19,9 @@ jobs:
         run: npm install -g openapi-to-postmanv2
       - name: Convert iMednet OpenAPI spec to Postman collection
         run: |
-          openapi2postmanv2 -s imednet/openapi.yaml -o imednet/postman_collection.json -p -O folderStrategy=Tags
-          jq -n --slurpfile c imednet/postman_collection.json '{collection: $c[0]}' > imednet/postman_request.json
-      - name: Upload Postman collection
-        env:
-          POSTMAN_API_KEY: ${{ secrets.POSTMAN_API_KEY }}
-          POSTMAN_COLLECTION_UID: ${{ secrets.POSTMAN_COLLECTION_UID }}
-        run: |
-          curl -X PUT "https://api.getpostman.com/collections/${POSTMAN_COLLECTION_UID}" \
-            -H "X-API-Key: ${POSTMAN_API_KEY}" \
-            -H "Content-Type: application/json" \
-            -d @imednet/postman_request.json
-      - uses: actions/upload-artifact@v3
+          mkdir -p imednet/postman
+          openapi2postmanv2 -s imednet/openapi.yaml -o imednet/postman/collection.json -p -O folderStrategy=Tags
+      - uses: EndBug/add-and-commit@v9
         with:
-          name: imednet-postman-collection
-          path: imednet/postman_collection.json
+          add: imednet/postman/collection.json
+          message: Update generated iMednet Postman collection
