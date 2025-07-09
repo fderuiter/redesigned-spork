@@ -1,3 +1,4 @@
+---
 name: Publish API docs
 
 on:
@@ -21,7 +22,7 @@ jobs:
         # add --options.theme.colors.primary.main=... etc. if desired
 
       # ── Publish to GitHub Pages ────────────────────────────────
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3.0.1
         with:
           path: ./site
       - uses: actions/deploy-pages@v4

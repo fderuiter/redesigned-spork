@@ -1,3 +1,4 @@
+---
 name: Validate iMednet OpenAPI specification
 
 on:
@@ -10,10 +11,12 @@ jobs:
   validate-imednet:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Validate iMednet specification
         run: |
-          docker run --rm -v ${{ github.workspace }}:/local openapitools/openapi-generator-cli validate -i /local/imednet/openapi.yaml
+          docker run --rm -v ${{ github.workspace }}:/local \
+            openapitools/openapi-generator-cli validate -i \
+              /local/imednet/openapi.yaml
 
   generate_clients:
     needs: validate-imednet
