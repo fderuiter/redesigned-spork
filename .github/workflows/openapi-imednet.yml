@@ -14,3 +14,22 @@ jobs:
       - name: Validate iMednet specification
         run: |
           docker run --rm -v ${{ github.workspace }}:/local openapitools/openapi-generator-cli validate -i /local/imednet/openapi.yaml
+
+  generate_clients:
+    needs: validate-imednet
+    strategy:
+      matrix:
+        lang:
+          - java
+          - javascript
+          - python
+          - ruby
+          - r
+          - rust
+          - cpprest
+          - go
+          - csharp
+          - c
+    uses: ./.github/workflows/_client-gen.yml
+    with:
+      language: ${{ matrix.lang }}
