@@ -1,4 +1,4 @@
-name: Generate iMednet Postman Collection
+name: Update iMednet Postman Collection
 
 on:
   workflow_dispatch:
