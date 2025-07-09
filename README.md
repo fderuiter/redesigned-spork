@@ -1,4 +1,4 @@
-# redesigned-spork
+# imednet-openAPI
 
 This repository hosts OpenAPI specifications for two clinical research platforms.
 
