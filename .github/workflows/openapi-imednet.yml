@@ -31,7 +31,7 @@ jobs:
             -i /local/imednet/openapi.yaml \
             -g ${{ matrix.language }} \
             -o /local/imednet/${{ matrix.language }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: imednet-${{ matrix.language }}
           path: imednet/${{ matrix.language }}
