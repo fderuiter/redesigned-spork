@@ -31,7 +31,7 @@ jobs:
             -i /local/veeva_vault/openapi.yaml \
             -g ${{ matrix.language }} \
             -o /local/veeva_vault/${{ matrix.language }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: veeva-${{ matrix.language }}
           path: veeva_vault/${{ matrix.language }}
