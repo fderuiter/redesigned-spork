@@ -1,5 +1,7 @@
 # redesigned-spork
 
+[![Validate and Generate SDKs](https://github.com/fderuiter/redesigned-spork/actions/workflows/openapi-generate.yml/badge.svg)](https://github.com/fderuiter/redesigned-spork/actions/workflows/openapi-generate.yml)
+
 This repository hosts OpenAPI specifications for two clinical research platforms.
 
 - **iMednet EDC API**: see `imednet/openapi.yaml` and the accompanying RST documentation under `imednet/api_docs`.
