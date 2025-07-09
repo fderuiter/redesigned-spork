@@ -5,26 +5,77 @@ info:
   description: |
     Swagger specification for the iMednet EDC REST API derived from
     the SDK documentation. The API exposes clinical study resources
-    via JSON. Requests require `x-api-key` and `x-imn-security-key`
-    headers for authentication. API keys should remain private.
-    Example request using ``curl``::
+    via JSON.
+
+    **Security and Validation**
+
+    API keys should remain secure. Mednet does not recommend sharing
+    keys or making them public. Publicly exposing your credentials can
+    result in your account being compromised. Some implementation
+    decisions can expose keys and should be avoided wherever possible
+    (e.g. CORS).
+
+    Making a successful request requires authentication using request
+    headers. Valid values for the `x-api-key` and `x-imn-security-key`
+    header attributes are required to ensure secure access to your
+    data. The content of your header might look something like the
+    following::
+
+      {
+          "x-api-key": "your-imednet-supplied-api-key",
+          "x-imn-security-key": "your-imednet-supplied-security-key"
+      }
+
+    Example request using ``curl`` to request sites from STUDYKEY::
 
       curl -X GET https://edc.prod.imednetapi.com/api/v1/edc/studies/STUDYKEY/sites \
         -H 'x-api-key: XXXXXXXX' \
         -H 'x-imn-security-key: XXX-XXX-XX-XXXXXX' \
         -H 'Content-Type: application/json'
-    
+
     Results may be filtered using query parameters. A ``filter`` string
     accepts attribute/operator/value pairs such as ``formId>10`` and
     ``formType==SUBJECT`` combined with ``and``/``;`` or ``or``/``,``, while
     ``recordDataFilter`` applies to dynamic question data. Supported
     operators include ``<``, ``<=``, ``>``, ``>=``, ``==`` and ``!=``. Dates
     use UTC timestamps like ``YYYY-MM-DDTHH:MM:SSZ``.
+    Error responses use standard HTTP status codes to convey the reason for failure:
+      - **400 Bad Request** for invalid input parameters
+      - **401 Unauthorized** when authentication headers are missing or invalid
+      - **403 Forbidden** when the study key is invalid or access is denied
+      - **404 Not Found** when the resource does not exist
+      - **429 Too Many Requests** when request limits are exceeded
+      - **500 Internal Server Error** for unexpected failures
+
 servers:
   - url: https://edc.prod.imednetapi.com/api/v1/edc
-security:
-  - ApiKey: []
-    ImnSecurityKey: []
+tags:
+  - name: Studies
+    description: Study metadata
+  - name: Forms
+    description: eCRF form definitions
+  - name: Variables
+    description: eCRF field variables
+  - name: Intervals
+    description: Scheduled visits or intervals
+  - name: Sites
+    description: Study sites
+  - name: Subjects
+    description: Enrolled subjects
+  - name: Records
+    description: eCRF record instances
+  - name: RecordRevisions
+    description: Change history for records
+  - name: Codings
+    description: Medical coding history
+  - name: Queries
+    description: Data queries
+  - name: Visits
+    description: Subject visits
+  - name: Users
+    description: Study users
+  - name: Jobs
+    description: Background jobs
 paths:
   /studies:
     get:
@@ -34,6 +85,8 @@ paths:
         Filter attributes: ``studyKey``, ``studyType``, ``studyName``,
         ``dateCreated`` and ``dateModified``.
       operationId: listStudies
+      tags:
+        - Studies
       parameters:
         - in: query
           name: page
@@ -63,14 +116,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedStudyList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}:
     get:
       summary: Retrieve a study
       description: Return metadata for the specified study.
       operationId: getStudy
+      tags:
+        - Studies
       parameters:
         - in: path
           name: studyKey
@@ -85,9 +148,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/Study'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/forms:
     get:
       summary: List forms
@@ -96,6 +167,8 @@ paths:
         Filter attributes: ``formId``, ``formKey``, ``formName``,
         ``formType``, ``dateCreated`` and ``dateModified``.
       operationId: listForms
+      tags:
+        - Forms
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -110,9 +183,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedFormList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/variables:
     get:
       summary: List variables
@@ -122,6 +203,8 @@ paths:
         ``dateCreated``, ``dateModified``, ``formId``, ``formKey``,
         ``formName`` and ``label``.
       operationId: listVariables
+      tags:
+        - Variables
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -136,9 +219,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedVariableList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/intervals:
     get:
       summary: List intervals
@@ -147,6 +238,8 @@ paths:
         Filter attributes: ``intervalId``, ``intervalName``, ``intervalGroupId``,
         ``intervalGroupName``, ``dateCreated`` and ``dateModified``.
       operationId: listIntervals
+      tags:
+        - Intervals
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -161,9 +254,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedIntervalList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/sites:
     get:
       summary: List sites
@@ -172,6 +273,8 @@ paths:
         Filter attributes: ``siteId``, ``siteName``, ``siteEnrollmentStatus``,
         ``dateCreated`` and ``dateModified``.
       operationId: listSites
+      tags:
+        - Sites
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -186,14 +289,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedSiteList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/subjects:
     get:
       summary: List subjects
       description: Returns all subjects enrolled in the study.
       operationId: listSubjects
+      tags:
+        - Subjects
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -208,9 +321,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedSubjectList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/records:
     get:
       summary: List records
@@ -220,6 +341,8 @@ paths:
         ``recordId``, ``parentRecordId``, ``recordType``, ``recordStatus``,
         ``subjectKey``, ``dateCreated`` and ``dateModified``.
       operationId: listRecords
+      tags:
+        - Records
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -244,13 +367,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedRecordList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
     post:
       summary: Create records
       description: Adds new records and returns a job for asynchronous processing.
       operationId: createRecords
+      tags:
+        - Records
       parameters:
         - $ref: '#/components/parameters/studyKey'
       requestBody:
@@ -305,9 +438,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/JobResponse'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/recordRevisions:
     get:
       summary: List record revisions
@@ -317,6 +458,8 @@ paths:
         ``recordRevision``, ``dataRevision``, ``recordStatus``, ``user``,
         ``reasonForChange`` and ``dateCreated``.
       operationId: listRecordRevisions
+      tags:
+        - RecordRevisions
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -331,9 +474,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedRecordRevisionList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/codings:
     get:
       summary: List codings
@@ -343,6 +494,8 @@ paths:
         ``revision``, ``variable``, ``value``, ``code``, ``codedBy``, ``reason``,
         ``dictionaryName``, ``dictionaryVersion`` and ``dateCoded``.
       operationId: listCodings
+      tags:
+        - Codings
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -357,14 +510,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedCodingList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/queries:
     get:
       summary: List queries
       description: Returns queries associated with the study.
       operationId: listQueries
+      tags:
+        - Queries
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -379,9 +542,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedQueryList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/visits:
     get:
       summary: List visits
@@ -391,6 +562,8 @@ paths:
         ``intervalGroupName``, ``startDate``, ``endDate``, ``dueDate``,
         ``visitDate``, ``dateCreated`` and ``dateModified``.
       operationId: listVisits
+      tags:
+        - Visits
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -405,14 +578,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedVisitList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/users:
     get:
       summary: List users
       description: Returns users associated with the study.
       operationId: listUsers
+      tags:
+        - Users
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -431,14 +614,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedUserList'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
   /studies/{studyKey}/jobs/{batchId}:
     get:
       summary: Retrieve job status
       description: Checks the status of a record import job.
       operationId: getJob
+      tags:
+        - Jobs
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - in: path
@@ -454,19 +647,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/JobStatus'
         '400':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/BadRequest'
         '401':
-          $ref: '#/components/responses/ErrorResponse'
+            $ref: '#/components/responses/Unauthorized'
+        '403':
+            $ref: '#/components/responses/Forbidden'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '429':
+            $ref: '#/components/responses/TooManyRequests'
+        '500':
+            $ref: '#/components/responses/InternalServerError'
 components:
-  securitySchemes:
-    ApiKey:
-      type: apiKey
-      in: header
-      name: x-api-key
-    ImnSecurityKey:
-      type: apiKey
-      in: header
-      name: x-imn-security-key
   parameters:
     studyKey:
       in: path
@@ -508,6 +700,60 @@ components:
   responses:
     ErrorResponse:
       description: Error information when the request fails
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/Metadata'
+    BadRequest:
+      description: The request was malformed. The response body will include an error providing further information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/Metadata'
+    Unauthorized:
+      description: The request was rejected related to security issue. The response body will include an error providing further information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/Metadata'
+    Forbidden:
+      description: The request was rejected related to security issue, likely an invalid studyKey. The response body will include an error providing further information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/Metadata'
+    NotFound:
+      description: The request was rejected related to invalid resource issue. The response body will include an error providing further information
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/Metadata'
+    TooManyRequests:
+      description: The request was rejected related to limit-exceeding requests. Please contact Mednet support for assistance
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/Metadata'
+    InternalServerError:
+      description: The request was rejected because of unknown issue. Please contact Mednet support for assistance
       content:
         application/json:
           schema:
