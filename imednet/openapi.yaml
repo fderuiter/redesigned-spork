@@ -5,15 +5,34 @@ info:
   description: |
     Swagger specification for the iMednet EDC REST API derived from
     the SDK documentation. The API exposes clinical study resources
-    via JSON. Requests require `x-api-key` and `x-imn-security-key`
-    headers for authentication. API keys should remain private.
-    Example request using ``curl``::
+    via JSON.
+
+    **Security and Validation**
+
+    API keys should remain secure. Mednet does not recommend sharing
+    keys or making them public. Publicly exposing your credentials can
+    result in your account being compromised. Some implementation
+    decisions can expose keys and should be avoided wherever possible
+    (e.g. CORS).
+
+    Making a successful request requires authentication using request
+    headers. Valid values for the `x-api-key` and `x-imn-security-key`
+    header attributes are required to ensure secure access to your
+    data. The content of your header might look something like the
+    following::
+
+      {
+          "x-api-key": "your-imednet-supplied-api-key",
+          "x-imn-security-key": "your-imednet-supplied-security-key"
+      }
+
+    Example request using ``curl`` to request sites from STUDYKEY::
 
       curl -X GET https://edc.prod.imednetapi.com/api/v1/edc/studies/STUDYKEY/sites \
         -H 'x-api-key: XXXXXXXX' \
         -H 'x-imn-security-key: XXX-XXX-XX-XXXXXX' \
         -H 'Content-Type: application/json'
-    
+
     Results may be filtered using query parameters. A ``filter`` string
     accepts attribute/operator/value pairs such as ``formId>10`` and
     ``formType==SUBJECT`` combined with ``and``/``;`` or ``or``/``,``, while
@@ -22,9 +41,6 @@ info:
     use UTC timestamps like ``YYYY-MM-DDTHH:MM:SSZ``.
 servers:
   - url: https://edc.prod.imednetapi.com/api/v1/edc
-security:
-  - ApiKey: []
-    ImnSecurityKey: []
 paths:
   /studies:
     get:
@@ -62,9 +78,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedStudyList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}:
     get:
@@ -84,9 +98,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Study'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/forms:
     get:
@@ -109,9 +121,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedFormList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/variables:
     get:
@@ -135,9 +145,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedVariableList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/intervals:
     get:
@@ -160,9 +168,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedIntervalList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/sites:
     get:
@@ -185,9 +191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedSiteList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/subjects:
     get:
@@ -207,9 +211,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedSubjectList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/records:
     get:
@@ -243,9 +245,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedRecordList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
     post:
       summary: Create records
@@ -304,9 +304,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobResponse'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/recordRevisions:
     get:
@@ -330,9 +328,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedRecordRevisionList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/codings:
     get:
@@ -356,9 +352,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedCodingList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/queries:
     get:
@@ -378,9 +372,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedQueryList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/visits:
     get:
@@ -404,9 +396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedVisitList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/users:
     get:
@@ -430,9 +420,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedUserList'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/jobs/{batchId}:
     get:
@@ -453,20 +441,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobStatus'
-        '400':
-          $ref: '#/components/responses/ErrorResponse'
-        '401':
+        default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  securitySchemes:
-    ApiKey:
-      type: apiKey
-      in: header
-      name: x-api-key
-    ImnSecurityKey:
-      type: apiKey
-      in: header
-      name: x-imn-security-key
   parameters:
     studyKey:
       in: path
