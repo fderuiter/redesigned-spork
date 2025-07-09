@@ -7,6 +7,11 @@ info:
     the SDK documentation. The API exposes clinical study resources
     via JSON.
 
+    **Base URL**
+
+    ``https://edc.prod.imednetapi.com`` is the production endpoint. Combine it
+    with a route such as ``/api/v1/edc/studies`` to access resources.
+
     **Security and Validation**
 
     API keys should remain secure. Mednet does not recommend sharing
@@ -33,6 +38,17 @@ info:
         -H 'x-imn-security-key: XXX-XXX-XX-XXXXXX' \
         -H 'Content-Type: application/json'
 
+    **Header**
+
+    The following request headers are required for all endpoints:
+
+    - ``Accept`` – supported response media type, must be ``application/json``
+    - ``x-api-key`` – valid API key
+    - ``x-imn-security-key`` – valid security key
+    - ``Content-Type`` – supported request media type, must be ``application/json``
+
+    Responses include ``Content-Type: application/json``.
+
     Results may be filtered using query parameters. A ``filter`` string
     accepts attribute/operator/value pairs such as ``formId>10`` and
     ``formType==SUBJECT`` combined with ``and``/``;`` or ``or``/``,``, while
@@ -49,6 +65,36 @@ info:
 
 servers:
   - url: https://edc.prod.imednetapi.com/api/v1/edc
+security:
+  - ApiKey: []
+    ImnSecurityKey: []
+tags:
+  - name: Studies
+    description: Study metadata
+  - name: Forms
+    description: eCRF form definitions
+  - name: Variables
+    description: eCRF field variables
+  - name: Intervals
+    description: Scheduled visits or intervals
+  - name: Sites
+    description: Study sites
+  - name: Subjects
+    description: Enrolled subjects
+  - name: Records
+    description: eCRF record instances
+  - name: RecordRevisions
+    description: Change history for records
+  - name: Codings
+    description: Medical coding history
+  - name: Queries
+    description: Data queries
+  - name: Visits
+    description: Subject visits
+  - name: Users
+    description: Study users
+  - name: Jobs
+    description: Background jobs
 paths:
   /studies:
     get:
@@ -58,6 +104,8 @@ paths:
         Filter attributes: ``studyKey``, ``studyType``, ``studyName``,
         ``dateCreated`` and ``dateModified``.
       operationId: listStudies
+      tags:
+        - Studies
       parameters:
         - in: query
           name: page
@@ -103,6 +151,8 @@ paths:
       summary: Retrieve a study
       description: Return metadata for the specified study.
       operationId: getStudy
+      tags:
+        - Studies
       parameters:
         - in: path
           name: studyKey
@@ -136,6 +186,8 @@ paths:
         Filter attributes: ``formId``, ``formKey``, ``formName``,
         ``formType``, ``dateCreated`` and ``dateModified``.
       operationId: listForms
+      tags:
+        - Forms
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -170,6 +222,8 @@ paths:
         ``dateCreated``, ``dateModified``, ``formId``, ``formKey``,
         ``formName`` and ``label``.
       operationId: listVariables
+      tags:
+        - Variables
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -203,6 +257,8 @@ paths:
         Filter attributes: ``intervalId``, ``intervalName``, ``intervalGroupId``,
         ``intervalGroupName``, ``dateCreated`` and ``dateModified``.
       operationId: listIntervals
+      tags:
+        - Intervals
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -236,6 +292,8 @@ paths:
         Filter attributes: ``siteId``, ``siteName``, ``siteEnrollmentStatus``,
         ``dateCreated`` and ``dateModified``.
       operationId: listSites
+      tags:
+        - Sites
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -266,6 +324,8 @@ paths:
       summary: List subjects
       description: Returns all subjects enrolled in the study.
       operationId: listSubjects
+      tags:
+        - Subjects
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -300,6 +360,8 @@ paths:
         ``recordId``, ``parentRecordId``, ``recordType``, ``recordStatus``,
         ``subjectKey``, ``dateCreated`` and ``dateModified``.
       operationId: listRecords
+      tags:
+        - Records
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -339,6 +401,8 @@ paths:
       summary: Create records
       description: Adds new records and returns a job for asynchronous processing.
       operationId: createRecords
+      tags:
+        - Records
       parameters:
         - $ref: '#/components/parameters/studyKey'
       requestBody:
@@ -413,6 +477,8 @@ paths:
         ``recordRevision``, ``dataRevision``, ``recordStatus``, ``user``,
         ``reasonForChange`` and ``dateCreated``.
       operationId: listRecordRevisions
+      tags:
+        - RecordRevisions
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -447,6 +513,8 @@ paths:
         ``revision``, ``variable``, ``value``, ``code``, ``codedBy``, ``reason``,
         ``dictionaryName``, ``dictionaryVersion`` and ``dateCoded``.
       operationId: listCodings
+      tags:
+        - Codings
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -477,6 +545,8 @@ paths:
       summary: List queries
       description: Returns queries associated with the study.
       operationId: listQueries
+      tags:
+        - Queries
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -511,6 +581,8 @@ paths:
         ``intervalGroupName``, ``startDate``, ``endDate``, ``dueDate``,
         ``visitDate``, ``dateCreated`` and ``dateModified``.
       operationId: listVisits
+      tags:
+        - Visits
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -541,6 +613,8 @@ paths:
       summary: List users
       description: Returns users associated with the study.
       operationId: listUsers
+      tags:
+        - Users
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - $ref: '#/components/parameters/pageParam'
@@ -575,6 +649,8 @@ paths:
       summary: Retrieve job status
       description: Checks the status of a record import job.
       operationId: getJob
+      tags:
+        - Jobs
       parameters:
         - $ref: '#/components/parameters/studyKey'
         - in: path
@@ -602,6 +678,15 @@ paths:
         '500':
             $ref: '#/components/responses/InternalServerError'
 components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+    ImnSecurityKey:
+      type: apiKey
+      in: header
+      name: x-imn-security-key
   parameters:
     studyKey:
       in: path
