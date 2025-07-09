@@ -6,13 +6,33 @@ info:
     Swagger specification for the iMednet EDC REST API derived from
     the SDK documentation. The API exposes clinical study resources
     via JSON. Requests require `x-api-key` and `x-imn-security-key`
-    headers for authentication.
+    headers for authentication. API keys should remain private.
+    Example request using ``curl``::
+
+      curl -X GET https://edc.prod.imednetapi.com/api/v1/edc/studies/STUDYKEY/sites \
+        -H 'x-api-key: XXXXXXXX' \
+        -H 'x-imn-security-key: XXX-XXX-XX-XXXXXX' \
+        -H 'Content-Type: application/json'
+    
+    Results may be filtered using query parameters. A ``filter`` string
+    accepts attribute/operator/value pairs such as ``formId>10`` and
+    ``formType==SUBJECT`` combined with ``and``/``;`` or ``or``/``,``, while
+    ``recordDataFilter`` applies to dynamic question data. Supported
+    operators include ``<``, ``<=``, ``>``, ``>=``, ``==`` and ``!=``. Dates
+    use UTC timestamps like ``YYYY-MM-DDTHH:MM:SSZ``.
 servers:
   - url: https://edc.prod.imednetapi.com/api/v1/edc
+security:
+  - ApiKey: []
+    ImnSecurityKey: []
 paths:
   /studies:
     get:
       summary: List studies
+      description: |
+        Returns metadata for studies the API key can access.
+        Filter attributes: ``studyKey``, ``studyType``, ``studyName``,
+        ``dateCreated`` and ``dateModified``.
       operationId: listStudies
       parameters:
         - in: query
@@ -42,9 +62,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedStudyList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}:
     get:
       summary: Retrieve a study
+      description: Return metadata for the specified study.
       operationId: getStudy
       parameters:
         - in: path
@@ -59,9 +84,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Study'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/forms:
     get:
       summary: List forms
+      description: |
+        Returns the design specifications for eCRFs in the study.
+        Filter attributes: ``formId``, ``formKey``, ``formName``,
+        ``formType``, ``dateCreated`` and ``dateModified``.
       operationId: listForms
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -76,9 +109,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedFormList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/variables:
     get:
       summary: List variables
+      description: |
+        Retrieves variables representing eCRF fields for the study.
+        Filter attributes: ``variableId``, ``variableType``, ``variableName``,
+        ``dateCreated``, ``dateModified``, ``formId``, ``formKey``,
+        ``formName`` and ``label``.
       operationId: listVariables
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -93,9 +135,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedVariableList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/intervals:
     get:
       summary: List intervals
+      description: |
+        Lists scheduled intervals or visits defined for the study.
+        Filter attributes: ``intervalId``, ``intervalName``, ``intervalGroupId``,
+        ``intervalGroupName``, ``dateCreated`` and ``dateModified``.
       operationId: listIntervals
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -110,9 +160,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedIntervalList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/sites:
     get:
       summary: List sites
+      description: |
+        Returns the set of sites participating in the study.
+        Filter attributes: ``siteId``, ``siteName``, ``siteEnrollmentStatus``,
+        ``dateCreated`` and ``dateModified``.
       operationId: listSites
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -127,9 +185,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedSiteList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/subjects:
     get:
       summary: List subjects
+      description: Returns all subjects enrolled in the study.
       operationId: listSubjects
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -144,9 +207,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedSubjectList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/records:
     get:
       summary: List records
+      description: |
+        Returns eCRF record instances for the study.
+        Filter attributes: ``intervalId``, ``formId``, ``formKey``, ``siteId``,
+        ``recordId``, ``parentRecordId``, ``recordType``, ``recordStatus``,
+        ``subjectKey``, ``dateCreated`` and ``dateModified``.
       operationId: listRecords
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -156,6 +228,12 @@ paths:
         - $ref: '#/components/parameters/filterParam'
         - in: query
           name: recordDataFilter
+          description: |
+            Search criteria for values within ``recordData``. Supports the
+            same operators as ``filter`` with the addition of ``=~`` for
+            case-insensitive contains. Separate multiple conditions with
+            ``;`` for AND or ``,`` for OR but do not mix both connectors in
+            one request.
           schema:
             type: string
       responses:
@@ -165,8 +243,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedRecordList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
     post:
       summary: Create records
+      description: Adds new records and returns a job for asynchronous processing.
       operationId: createRecords
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -178,6 +261,42 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/RecordRequest'
+            examples:
+              allFieldTypes:
+                summary: Sample request body containing all valid field types
+                value:
+                  - formKey: REG
+                    siteName: Minneapolis
+                    data:
+                      textField: "Text data"
+                      dateField: "2020-01-20"
+                      numberField: 11
+                      radioField: "Yes"
+                      dropdownField: "Always"
+                      memoField: "Memo data"
+                      checkboxField: true
+              registerSubject:
+                summary: Register Subject
+                value:
+                  - formKey: REG
+                    siteName: Minneapolis
+                    data:
+                      textField: "Text value"
+              updateScheduledRecord:
+                summary: Update a Scheduled Record
+                value:
+                  - formKey: REG
+                    subjectKey: "651-042"
+                    intervalName: Registration
+                    data:
+                      textField: "Text value"
+              createNewRecord:
+                summary: Create a New Record
+                value:
+                  - formKey: REG
+                    subjectKey: "123-876"
+                    data:
+                      textField: "Text value"
       responses:
         '202':
           description: Job created
@@ -185,9 +304,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/recordRevisions:
     get:
       summary: List record revisions
+      description: |
+        Returns revision history for records in the study.
+        Filter attributes: ``recordRevisionId``, ``recordId``, ``recordOid``,
+        ``recordRevision``, ``dataRevision``, ``recordStatus``, ``user``,
+        ``reasonForChange`` and ``dateCreated``.
       operationId: listRecordRevisions
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -202,9 +330,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedRecordRevisionList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/codings:
     get:
       summary: List codings
+      description: |
+        Returns medical coding history entries for the study.
+        Filter attributes: ``siteId``, ``subjectId``, ``formId``, ``recordId``,
+        ``revision``, ``variable``, ``value``, ``code``, ``codedBy``, ``reason``,
+        ``dictionaryName``, ``dictionaryVersion`` and ``dateCoded``.
       operationId: listCodings
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -219,9 +356,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedCodingList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/queries:
     get:
       summary: List queries
+      description: Returns queries associated with the study.
       operationId: listQueries
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -236,9 +378,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedQueryList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/visits:
     get:
       summary: List visits
+      description: |
+        Returns visit data for subjects in the study.
+        Filter attributes: ``intervalId``, ``intervalName``, ``intervalGroupId``,
+        ``intervalGroupName``, ``startDate``, ``endDate``, ``dueDate``,
+        ``visitDate``, ``dateCreated`` and ``dateModified``.
       operationId: listVisits
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -253,9 +404,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedVisitList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/users:
     get:
       summary: List users
+      description: Returns users associated with the study.
       operationId: listUsers
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -274,9 +430,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedUserList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/jobs/{batchId}:
     get:
       summary: Retrieve job status
+      description: Checks the status of a record import job.
       operationId: getJob
       parameters:
         - $ref: '#/components/parameters/studyKey'
@@ -292,7 +453,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobStatus'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
 components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+    ImnSecurityKey:
+      type: apiKey
+      in: header
+      name: x-imn-security-key
   parameters:
     studyKey:
       in: path
@@ -313,16 +487,34 @@ components:
         type: integer
         default: 25
         maximum: 500
-    sortParam:
-      in: query
-      name: sort
-      schema:
-        type: string
-    filterParam:
-      in: query
-      name: filter
-      schema:
-        type: string
+  sortParam:
+    in: query
+    name: sort
+    schema:
+      type: string
+  filterParam:
+    in: query
+    name: filter
+    description: |
+      Filter criteria in ``attribute<operator>value`` form. Attributes
+      must match the response fields for the endpoint. Combine multiple
+      expressions using ``and`` or ``;`` for logical AND and ``or`` or
+      ``,`` for logical OR. Supported operators are ``<``, ``<=``, ``>``,
+      ``>=``, ``==`` and ``!=``. Dates should be formatted as
+      ``YYYY-MM-DDTHH:MM:SSZ``. Use ``recordDataFilter`` to search within
+      the ``recordData`` payload of a record.
+    schema:
+      type: string
+  responses:
+    ErrorResponse:
+      description: Error information when the request fails
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/Metadata'
   schemas:
     Metadata:
       type: object
@@ -336,7 +528,30 @@ components:
         timestamp:
           type: string
         error:
-          type: object
+          $ref: '#/components/schemas/Error'
+          description: Error details when a request fails.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          enum: ['1000', '9000', '9001']
+        description:
+          type: string
+          description: Error description message
+        field:
+          $ref: '#/components/schemas/ErrorField'
+          description: Field that caused the validation error
+    ErrorField:
+      type: object
+      properties:
+        attribute:
+          type: string
+          description: Origination request attribute which caused the error
+        value:
+          type: string
+          description: The value of request attribute passed in the request
     Pagination:
       type: object
       properties:
