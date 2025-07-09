@@ -1,4 +1,4 @@
-name: Validate and Generate iMednet SDKs
+name: Validate iMednet OpenAPI specification
 
 on:
   push:
@@ -14,24 +14,3 @@ jobs:
       - name: Validate iMednet specification
         run: |
           docker run --rm -v ${{ github.workspace }}:/local openapitools/openapi-generator-cli validate -i /local/imednet/openapi.yaml
-
-  generate-imednet:
-    needs: validate-imednet
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Generate client SDKs
-        run: |
-          languages="c csharp dart go java javascript python r ruby rust"
-          for lang in $languages; do
-            mkdir -p imednet/$lang
-            docker run --rm -u $(id -u):$(id -g) -v ${{ github.workspace }}:/local \
-              openapitools/openapi-generator-cli generate \
-              -i /local/imednet/openapi.yaml \
-              -g $lang \
-              -o /local/imednet/$lang
-          done
-      - uses: EndBug/add-and-commit@v9
-        with:
-          add: imednet/*
-          message: Update generated iMednet SDKs
