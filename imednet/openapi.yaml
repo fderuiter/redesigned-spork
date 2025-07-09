@@ -261,6 +261,42 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/RecordRequest'
+            examples:
+              allFieldTypes:
+                summary: Sample request body containing all valid field types
+                value:
+                  - formKey: REG
+                    siteName: Minneapolis
+                    data:
+                      textField: "Text data"
+                      dateField: "2020-01-20"
+                      numberField: 11
+                      radioField: "Yes"
+                      dropdownField: "Always"
+                      memoField: "Memo data"
+                      checkboxField: true
+              registerSubject:
+                summary: Register Subject
+                value:
+                  - formKey: REG
+                    siteName: Minneapolis
+                    data:
+                      textField: "Text value"
+              updateScheduledRecord:
+                summary: Update a Scheduled Record
+                value:
+                  - formKey: REG
+                    subjectKey: "651-042"
+                    intervalName: Registration
+                    data:
+                      textField: "Text value"
+              createNewRecord:
+                summary: Create a New Record
+                value:
+                  - formKey: REG
+                    subjectKey: "123-876"
+                    data:
+                      textField: "Text value"
       responses:
         '202':
           description: Job created
