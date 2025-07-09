@@ -62,6 +62,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedStudyList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}:
     get:
       summary: Retrieve a study
@@ -80,6 +84,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Study'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/forms:
     get:
       summary: List forms
@@ -101,6 +109,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedFormList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/variables:
     get:
       summary: List variables
@@ -123,6 +135,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedVariableList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/intervals:
     get:
       summary: List intervals
@@ -144,6 +160,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedIntervalList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/sites:
     get:
       summary: List sites
@@ -165,6 +185,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedSiteList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/subjects:
     get:
       summary: List subjects
@@ -183,6 +207,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedSubjectList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/records:
     get:
       summary: List records
@@ -215,6 +243,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedRecordList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
     post:
       summary: Create records
       description: Adds new records and returns a job for asynchronous processing.
@@ -236,6 +268,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/recordRevisions:
     get:
       summary: List record revisions
@@ -258,6 +294,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedRecordRevisionList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/codings:
     get:
       summary: List codings
@@ -280,6 +320,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedCodingList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/queries:
     get:
       summary: List queries
@@ -298,6 +342,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedQueryList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/visits:
     get:
       summary: List visits
@@ -320,6 +368,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedVisitList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/users:
     get:
       summary: List users
@@ -342,6 +394,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedUserList'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
   /studies/{studyKey}/jobs/{batchId}:
     get:
       summary: Retrieve job status
@@ -361,6 +417,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JobStatus'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
 components:
   securitySchemes:
     ApiKey:
@@ -409,6 +469,16 @@ components:
       the ``recordData`` payload of a record.
     schema:
       type: string
+  responses:
+    ErrorResponse:
+      description: Error information when the request fails
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/Metadata'
   schemas:
     Metadata:
       type: object
@@ -422,7 +492,30 @@ components:
         timestamp:
           type: string
         error:
-          type: object
+          $ref: '#/components/schemas/Error'
+          description: Error details when a request fails.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          enum: ['1000', '9000', '9001']
+        description:
+          type: string
+          description: Error description message
+        field:
+          $ref: '#/components/schemas/ErrorField'
+          description: Field that caused the validation error
+    ErrorField:
+      type: object
+      properties:
+        attribute:
+          type: string
+          description: Origination request attribute which caused the error
+        value:
+          type: string
+          description: The value of request attribute passed in the request
     Pagination:
       type: object
       properties:
