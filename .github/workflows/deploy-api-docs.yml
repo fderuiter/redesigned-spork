@@ -51,7 +51,7 @@ jobs:
         run: |
           mkdir -p _site
           npx --yes redoc-cli@0.13.21 \
-            bundle imednet/openapi.yaml \
+            bundle spec/openapi.yaml \
             -o _site/index.html
 
       # ── (Optional) keep a copy on the generated-docs branch ────────────
