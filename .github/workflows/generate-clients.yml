@@ -28,7 +28,7 @@ jobs:
         with:
           generator: ${{ matrix.lang }}
           openapi-file: imednet/openapi.yaml
-          output-dir: client/${{ matrix.lang }}
+          command-args: -o client/${{ matrix.lang }}
 
       - name: Ensure client code exists
         run: |
