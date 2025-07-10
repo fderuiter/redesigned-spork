@@ -8,7 +8,7 @@ info:
     the API.
 
     '
-  version: 1.0.10
+  version: 1.0.11
 servers:
 - url: https://edc.prod.imednetapi.com/api/v1/edc
   description: Production EDC API server
