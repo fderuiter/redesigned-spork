@@ -635,6 +635,7 @@ components:
               type: string
               description: Error message describing the issue
           additionalProperties: true
+          title: components_schemas_Metadata_error
       title: Metadata
     Pagination:
       type: object
@@ -849,6 +850,7 @@ components:
               formName:
                 type: string
                 description: Form name scheduled in the interval
+            title: components_schemas_Interval_forms_item
         disabled:
           type: boolean
           description: Whether the interval is soft-deleted (disabled)
@@ -1342,6 +1344,7 @@ components:
           description: Data fields and values captured in this record. The structure
             is dynamic, with keys corresponding to variable names.
           additionalProperties: true
+          title: components_schemas_Record_recordData
       title: Record
     RecordCreateRequest:
       type: array
@@ -1395,9 +1398,11 @@ components:
             description: Key-value pairs of field names and values for the record
               data
             additionalProperties: true
+            title: components_schemas_RecordCreateRequest_item_data
         required:
         - formKey
         - data
+        title: components_schemas_RecordCreateRequest_item
       title: RecordCreateRequest
     RecordJobStatus:
       type: object
