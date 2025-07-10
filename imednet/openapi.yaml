@@ -4,7 +4,7 @@ info:
   description: |
     The Mednet EDC (Electronic Data Capture) REST API provides a single-point of access for reading data stored across iMednet data services.
     This specification documents all available endpoints in the latest version of the API.
-  version: "1.0.6"
+  version: "1.0.7"
 servers:
   - url: https://edc.prod.imednetapi.com/api/v1/edc
     description: Production EDC API server
