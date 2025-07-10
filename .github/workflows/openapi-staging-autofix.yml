@@ -68,6 +68,66 @@ jobs:
               print("No missing titles found.")
           PY
 
+      # ─── add titles for nested inline schemas ─────────────────
+      - name: Auto-add titles for inline schemas
+        run: |
+          python <<'PY'
+          import yaml, pathlib, re
+
+          path = pathlib.Path("imednet/openapi.yaml")
+          spec = yaml.safe_load(path.read_text())
+
+          changed = False
+          counter = 0
+
+          def slugify(s: str) -> str:
+              return re.sub(r"[^a-zA-Z0-9]+", "_", s).strip("_")
+
+          def ensure_titles(schema, path_parts):
+              global changed, counter
+              if not isinstance(schema, dict):
+                  return
+              typ = schema.get("type")
+              if (typ == "object" or "properties" in schema or "required" in schema) and "title" not in schema:
+                  schema["title"] = slugify("_".join(path_parts))
+                  changed = True
+                  counter += 1
+              if typ == "object":
+                  for prop, subs in (schema.get("properties") or {}).items():
+                      ensure_titles(subs, path_parts + [prop])
+              if typ == "array":
+                  items = schema.get("items")
+                  if items:
+                      ensure_titles(items, path_parts + ["item"])
+              for key in ("allOf", "oneOf", "anyOf"):
+                  for idx, subs in enumerate(schema.get(key) or []):
+                      ensure_titles(subs, path_parts + [key, str(idx)])
+
+          for name, schema in (spec.get("components", {}).get("schemas", {}) or {}).items():
+              ensure_titles(schema, ["components", "schemas", name])
+
+          for pth, ops in (spec.get("paths") or {}).items():
+              for method, op in (ops or {}).items():
+                  if not isinstance(op, dict):
+                      continue
+                  op_id = op.get("operationId") or slugify(f"{method}_{pth}")
+                  if "requestBody" in op:
+                      for media, cnt in (op["requestBody"].get("content") or {}).items():
+                          if "schema" in cnt:
+                              ensure_titles(cnt["schema"], [op_id, "requestBody"])
+                  for code, resp in (op.get("responses") or {}).items():
+                      if isinstance(resp, dict):
+                          for media, cnt in (resp.get("content") or {}).items():
+                              if "schema" in cnt:
+                                  ensure_titles(cnt["schema"], [op_id, code, "response"])
+
+          if changed:
+              path.write_text(yaml.dump(spec, sort_keys=False))
+              print(f"Added {counter} inline schema titles.")
+          else:
+              print("No inline schema titles needed.")
+          PY
+
       # ─── commit back to staging (skip CI to avoid loops) ──────
       - name: Commit auto-fix (if any)
         if: steps.autofix.outputs.changes == ''   # run regardless; python prints only
