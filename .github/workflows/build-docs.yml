@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
       - name: Bundle ReDoc HTML
         run: |
-          npx --yes redoc-cli@0.15.0 bundle imednet/openapi.yaml -o site/index.html
+          npx --yes redoc-cli@0.14.3 bundle imednet/openapi.yaml -o site/index.html
 
       # ── update generated-docs branch ──────────────────────────
       - name: Commit docs to generated-docs
