@@ -1,0 +1,11 @@
+{
+  "name": "imednet-openapi",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "swagger-cli": "^4.0.4"
+  },
+  "scripts": {
+    "test": "swagger-cli validate imednet/openapi.yaml"
+  }
+}
