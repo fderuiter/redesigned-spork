@@ -1,0 +1,83 @@
+name: Validate & auto-fix OpenAPI (staging)
+
+on:
+  push:
+    branches: [staging]
+    paths: [imednet/openapi.yaml]
+  workflow_dispatch: {}
+
+jobs:
+  validate-and-fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # allow committing back to staging
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ─── run the same syntax validator ────────────────────────
+      - name: Validate syntax
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/local" \
+            openapitools/openapi-generator-cli validate \
+            -i /local/imednet/openapi.yaml
+
+      # ─── add missing title fields automatically ───────────────
+      - name: Auto-add missing schema titles
+        id: autofix
+        run: |
+          python <<'PY'
+          import sys, yaml, pathlib, itertools, re, textwrap, datetime
+          path = pathlib.Path("imednet/openapi.yaml")
+          spec = yaml.safe_load(path.read_text())
+
+          changed = False
+          counter  = 0
+
+          def slugify(s):
+              return re.sub(r'[^a-zA-Z0-9]+', '_', s).strip('_')
+
+          # walk paths/operations
+          for pth, ops in (spec.get("paths") or {}).items():
+              for method, op in (ops or {}).items():
+                  op_id = op.get("operationId") or slugify(f"{method}_{pth}")
+                  responses = op.get("responses") or {}
+                  for code, resp in responses.items():
+                      if isinstance(resp, dict) and "content" in resp:
+                          for media, cnt in (resp["content"] or {}).items():
+                              schema = cnt.get("schema")
+                              if isinstance(schema, dict) and "title" not in schema:
+                                  schema["title"] = slugify(f"{op_id}_{code}_response")
+                                  changed = True
+                                  counter += 1
+
+          # walk component schemas
+          comps = spec.setdefault("components", {}).setdefault("schemas", {})
+          for name, schema in comps.items():
+              if isinstance(schema, dict) and "title" not in schema:
+                  schema["title"] = slugify(name)
+                  changed = True
+                  counter += 1
+
+          if changed:
+              path.write_text(yaml.dump(spec, sort_keys=False))
+              print(f"Added title to {counter} schema(s).")
+          else:
+              print("No missing titles found.")
+          PY
+
+      # ─── commit back to staging (skip CI to avoid loops) ──────
+      - name: Commit auto-fix (if any)
+        if: steps.autofix.outputs.changes == ''   # run regardless; python prints only
+        run: |
+          if git diff --quiet; then
+            echo "Nothing to commit."
+          else
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git config user.name  "github-actions[bot]"
+            git add imednet/openapi.yaml
+            git commit -m "chore: auto-fix OpenAPI schema titles [skip ci]"
+            git push
+          fi
