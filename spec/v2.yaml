@@ -442,7 +442,13 @@ paths:
       tags:
         - Records
       summary: Add new record or update subject/record data
-      description: Creates new subject records or updates existing records in the specified study. This endpoint accepts an array of records to create or update - each object specifying the form and subject (and optionally visit or record IDs) along with the data fields. The operation is asynchronous: a job identifier is returned to check the status of the data import. (Include the optional **x-email-notify** header to receive an email notification upon job completion.)
+      description: >-
+        Creates new subject records or updates existing records in the specified study. This
+        endpoint accepts an array of records to create or update - each object specifying the
+        form and subject (and optionally visit or record IDs) along with the data fields. The
+        operation is asynchronous: a job identifier is returned to check the status of the data
+        import. (Include the optional **x-email-notify** header to receive an email
+        notification upon job completion.)
       operationId: createRecords
       parameters:
         - $ref: '#/components/parameters/StudyKeyPath'
@@ -1357,6 +1363,150 @@ components:
           format: date-time
           description: Timestamp when the job finished processing
       title: Job
+    StudyList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Study'
+      title: StudyList
+    SiteList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Site'
+      title: SiteList
+    FormList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Form'
+      title: FormList
+    IntervalList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Interval'
+      title: IntervalList
+    VisitList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Visit'
+      title: VisitList
+    SubjectList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subject'
+      title: SubjectList
+    UserList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+      title: UserList
+    VariableList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Variable'
+      title: VariableList
+    CodingList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
+      title: CodingList
+    QueryList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Query'
+      title: QueryList
+    RecordRevisionList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordRevision'
+      title: RecordRevisionList
+    RecordList:
+      type: object
+      properties:
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Record'
+      title: RecordList
   parameters:
     StudyKeyPath:
       name: studyKey
