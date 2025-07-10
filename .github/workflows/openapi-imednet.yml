@@ -29,7 +29,6 @@ jobs:
           - ruby
           - r
           - rust
-          - cpprest
           - go
           - csharp
           - c
