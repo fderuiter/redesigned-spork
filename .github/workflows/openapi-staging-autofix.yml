@@ -3,7 +3,7 @@ name: Validate & auto-fix OpenAPI (staging)
 on:
   push:
     branches: [staging]
-    paths: [imednet/openapi.yaml]
+    paths: [spec/openapi.yaml]
   workflow_dispatch: {}
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
           docker run --rm \
             -v "${{ github.workspace }}:/local" \
             openapitools/openapi-generator-cli validate \
-            -i /local/imednet/openapi.yaml
+            -i /local/spec/openapi.yaml
 
       # ─── add missing title fields automatically ───────────────
       - name: Auto-add missing schema titles
@@ -30,7 +30,7 @@ jobs:
         run: |
           python <<'PY'
           import sys, yaml, pathlib, itertools, re, textwrap, datetime
-          path = pathlib.Path("imednet/openapi.yaml")
+          path = pathlib.Path("spec/openapi.yaml")
           spec = yaml.safe_load(path.read_text())
 
           changed = False
@@ -74,7 +74,7 @@ jobs:
           python <<'PY'
           import yaml, pathlib, re
 
-          path = pathlib.Path("imednet/openapi.yaml")
+          path = pathlib.Path("spec/openapi.yaml")
           spec = yaml.safe_load(path.read_text())
 
           changed = False
@@ -137,7 +137,7 @@ jobs:
           else
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git config user.name  "github-actions[bot]"
-            git add imednet/openapi.yaml
+            git add spec/openapi.yaml
             git commit -m "chore: auto-fix OpenAPI schema titles [skip ci]"
             git push
           fi
