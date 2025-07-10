@@ -3,7 +3,7 @@ name: Validate OpenAPI spec
 on:
   push:
     branches: [main]
-    paths: [imednet/openapi.yaml]
+    paths: [spec/openapi.yaml]
   workflow_dispatch: {}
 
 jobs:
@@ -16,4 +16,4 @@ jobs:
           docker run --rm \
             -v "${{ github.workspace }}:/local" \
             openapitools/openapi-generator-cli validate \
-            -i /local/imednet/openapi.yaml
+            -i /local/spec/openapi.yaml
