@@ -27,7 +27,7 @@ jobs:
         uses: openapi-generators/openapitools-generator-action@v1.5.0
         with:
           generator: ${{ matrix.lang }}
-          openapi-file: imednet/openapi.yaml
+          openapi-file: spec/openapi.yaml
           command-args: -o client/${{ matrix.lang }}
 
       - name: Ensure client code exists
