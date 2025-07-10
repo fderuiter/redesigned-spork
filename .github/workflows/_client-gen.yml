@@ -1,38 +1,100 @@
----
-name: OpenAPI client generation
+# .github/workflows/openapi-auto.yml
+name: Validate spec, generate clients & docs
 
 on:
-  workflow_call:
-    inputs:
-      language:
-        required: true
-        type: string
+  push:
+    branches: [main]
+    paths: [imednet/openapi.yaml]
+  workflow_dispatch: {}
 
 jobs:
-  generate:
+# ────────────────────────────────
+# 1) Validate the OpenAPI spec
+# ────────────────────────────────
+  validate-spec:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate specification
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/local" \
+            openapitools/openapi-generator-cli validate \
+            -i /local/imednet/openapi.yaml
 
-      - name: Cache build tools
-        uses: actions/cache@v3
+# ────────────────────────────────
+# 2) Build docs, update branch, deploy Pages
+# ────────────────────────────────
+  build-docs:
+    needs: validate-spec
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write          # commit to generated-docs
+      pages: write             # deploy Pages (requires repo-level Pages enabled)
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
         with:
-          path: |
-            ~/.m2/repository
-            ~/.npm
-            ~/.cargo/registry
-            ~/.gem
-          key: ${{ runner.os }}-${{ inputs.language }}-client-gen
+          fetch-depth: 0       # we need full history to (re)create a branch
+      - uses: actions/setup-node@v4
+      - name: Bundle ReDoc HTML
+        run: |
+          npx redoc-cli@0.15.1 bundle imednet/openapi.yaml -o site/index.html
+      # --- update generated-docs branch ---
+      - name: Commit docs to generated-docs
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git fetch origin
+          git checkout -B generated-docs
+          # wipe previous contents then copy new docs
+          git rm -rf . >/dev/null 2>&1 || true
+          cp -r site/* .
+          git add .
+          git commit -m "docs: regenerate from ${GITHUB_SHA}" || echo "No changes"
+          git push --force origin generated-docs
+      # --- publish GitHub Pages ---
+      - uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
 
-      - name: Generate ${{ inputs.language }} client
+# ────────────────────────────────
+# 3) Generate clients per language
+# ────────────────────────────────
+  generate-clients:
+    needs: validate-spec
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lang: [java, javascript, python, ruby, r, rust, go, csharp, c]
+    permissions:
+      contents: write          # push to generated-<lang>-client branches
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Generate ${{ matrix.lang }} client
         uses: openapi-generators/openapitools-generator-action@v1.5.0
         with:
-          generator: ${{ inputs.language }}
+          generator: ${{ matrix.lang }}
           openapi-file: imednet/openapi.yaml
-          output-dir: clients/${{ inputs.language }}
-
-      - name: Upload generated client
-        uses: actions/upload-artifact@v4
-        with:
-          name: client-${{ inputs.language }}
-          path: clients/${{ inputs.language }}
+          output-dir: client
+      # --- push to language-specific branch ---
+      - name: Publish client branch
+        env:
+          LANG_BRANCH: generated-${{ matrix.lang }}-client
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git fetch origin
+          git checkout -B "$LANG_BRANCH"
+          # remove old contents, copy fresh client code
+          git rm -rf . >/dev/null 2>&1 || true
+          cp -r client/* .
+          git add .
+          git commit -m "feat(${{
+              matrix.lang }}): regenerate client from ${GITHUB_SHA}" \
+            || echo "No changes"
+          git push --force origin "$LANG_BRANCH"
