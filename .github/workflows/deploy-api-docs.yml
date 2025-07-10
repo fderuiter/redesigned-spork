@@ -1,0 +1,83 @@
+# .github/workflows/deploy-api-docs.yml
+# Generates ReDoc HTML from your OpenAPI spec and deploys it with GitHub Pages
+name: Generate & Deploy API Docs
+
+on:
+  # Build on pushes to the default branch
+  push:
+    branches: ["main"]
+
+  # Re-run automatically after the “Validate OpenAPI spec” workflow succeeds
+  workflow_run:
+    workflows: ["Validate OpenAPI spec"]
+    types: [completed]
+
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
+
+# Required for committing to the generated-docs branch and for the Pages deploy
+permissions:
+  contents: write      # commit generated files
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false   # let any in-progress production deploy finish
+
+jobs:
+  build-docs:
+    # Only run when manually triggered, on push, or after a successful spec-validation run
+    if: ${{ github.event_name == 'workflow_dispatch'
+            || github.event_name == 'push'
+            || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # For workflow_run events, build the exact commit that was validated
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Setup Pages (env vars, paths)
+        uses: actions/configure-pages@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Generate HTML with ReDoc
+        run: |
+          mkdir -p _site
+          npx --yes redoc-cli@0.13.21 \
+            bundle imednet/openapi.yaml \
+            -o _site/index.html
+
+      # ── (Optional) keep a copy on the generated-docs branch ────────────
+      - name: Commit docs to generated-docs
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git fetch origin
+          git checkout -B generated-docs
+          git rm -rf . >/dev/null 2>&1 || true
+          cp -r _site/* .
+          git add .
+          git commit -m "docs: regenerate from ${GITHUB_SHA}" || echo "No changes"
+          git push --force origin generated-docs
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3   # defaults to ./_site
+
+  # ─────────────────── Deploy exactly like the original Jekyll workflow ───────────────────
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build-docs
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
