@@ -1,0 +1,53 @@
+name: Generate OpenAPI clients
+
+on:
+  workflow_run:
+    workflows: ["Validate OpenAPI spec"]
+    types: [completed]
+  workflow_dispatch: {}
+
+jobs:
+  generate-clients:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lang: [java, javascript, python, ruby, r, rust, go, csharp, c]
+    permissions:
+      contents: write
+    steps:
+      # checkout the exact commit validated in the previous workflow
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Generate ${{ matrix.lang }} client
+        uses: openapi-generators/openapitools-generator-action@v1.5.0
+        with:
+          generator: ${{ matrix.lang }}
+          openapi-file: imednet/openapi.yaml
+          output-dir: client/${{ matrix.lang }}
+
+      - name: Ensure client code exists
+        run: |
+          if [ ! -d "client/${{ matrix.lang }}" ] || [ -z "$(ls -A client/${{ matrix.lang }})" ]; then
+            echo "::error ::OpenAPI Generator produced no files for ${{ matrix.lang }}"
+            exit 1
+          fi
+
+      - name: Publish client branch
+        env:
+          LANG_BRANCH: generated-${{ matrix.lang }}-client
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git fetch origin
+          git checkout -B "$LANG_BRANCH"
+          git rm -rf . >/dev/null 2>&1 || true
+          cp -r client/${{ matrix.lang }}/* .
+          git add .
+          git commit -m "feat(${{ matrix.lang }}): regenerate client from ${GITHUB_SHA}" \
+            || echo "No changes"
+          git push --force origin "$LANG_BRANCH"
