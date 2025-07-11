@@ -7,7 +7,7 @@ servers:
   - url: "{{vaultDNS}}"
   - url: login.veevavault.com
 paths:
-  /api/{{version}}/delegation/vaults:
+  /api/{version}/delegation/vaults:
     parameters: []
     get:
       summary: Retrieve Delegations
@@ -39,7 +39,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/delegation/login:
+  /api/{version}/delegation/login:
     parameters: []
     post:
       summary: Initiate Delegated Session
@@ -74,7 +74,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/auth:
+  /api/{version}/auth:
     parameters: []
     post:
       summary: User Name and Password
@@ -106,9 +106,9 @@ paths:
       responses:
         "200":
           description: Success
-  /auth/oauth/session/:{oath_oidc_profile_id}:
+  /auth/oauth/session/{oath_oidc_profile_id}:
     parameters:
-      - name: "{oath_oidc_profile_id}"
+      - name: oath_oidc_profile_id
         in: path
         required: true
         example: "{{oath_oidc_profile_id}}"
@@ -202,7 +202,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/keep-alive:
+  /api/{version}/keep-alive:
     parameters: []
     post:
       summary: Session Keep Alive
@@ -234,7 +234,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users/me:
+  /api/{version}/objects/users/me:
     parameters: []
     get:
       summary: Validate Session User
@@ -314,7 +314,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/session:
+  /api/{version}/session:
     parameters: []
     delete:
       summary: End Session
@@ -347,7 +347,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/directdata/files:
+  /api/{version}/services/directdata/files:
     parameters: []
     get:
       summary: Retrieve Available Direct Data Files
@@ -408,9 +408,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/directdata/files/:{name}:
+  /api/{version}/services/directdata/files/{name}:
     parameters:
-      - name: "{name}"
+      - name: name
         in: path
         required: true
         description: >-
@@ -449,7 +449,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/query:
+  /api/{version}/query:
     parameters: []
     post:
       summary: Submitting a Query
@@ -493,7 +493,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/query/{{next_page}}:
+  /api/{version}/query/{{next_page}}:
     parameters: []
     post:
       summary: Next Page URL
@@ -537,7 +537,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/query/{{previous_page}}:
+  /api/{version}/query/{{previous_page}}:
     parameters: []
     post:
       summary: Previous Page URL
@@ -581,9 +581,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/configuration/:{component_type}:
+  /api/{version}/configuration/{component_type}:
     parameters:
-      - name: "{component_type}"
+      - name: component_type
         in: path
         required: true
         schema:
@@ -618,9 +618,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/configuration/:{component_type_and_record_name}:
+  /api/{version}/configuration/{component_type_and_record_name}:
     parameters:
-      - name: "{component_type_and_record_name}"
+      - name: component_type_and_record_name
         in: path
         required: true
         description: >-
@@ -670,9 +670,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/mdl/components/:{component_type_and_record_name}:
+  /api/mdl/components/{component_type_and_record_name}:
     parameters:
-      - name: "{component_type_and_record_name}"
+      - name: component_type_and_record_name
         in: path
         required: true
         description: >-
@@ -752,9 +752,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/mdl/components/:{component_type_and_record_name}/files:
+  /api/mdl/components/{component_type_and_record_name}/files:
     parameters:
-      - name: "{component_type_and_record_name}"
+      - name: component_type_and_record_name
         in: path
         required: true
         description: >-
@@ -863,7 +863,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/vobjects/{object_name}/actions/canceldeployment:
+  /api/{version}/metadata/vobjects/{object_name}/actions/canceldeployment:
     parameters:
       - name: object_name
         in: path
@@ -932,7 +932,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/components:
+  /api/{version}/metadata/components:
     parameters: []
     get:
       summary: Retrieve All Component Metadata
@@ -964,9 +964,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/components/:{component_type}:
+  /api/{version}/metadata/components/{component_type}:
     parameters:
-      - name: "{component_type}"
+      - name: component_type
         in: path
         required: true
         description: The component type name (Picklist, Docfield, Doctype, etc.).
@@ -1002,7 +1002,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/properties:
+  /api/{version}/metadata/objects/documents/properties:
     parameters: []
     get:
       summary: Retrieve All Document Fields
@@ -1034,7 +1034,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/properties/find_common:
+  /api/{version}/metadata/objects/documents/properties/find_common:
     parameters: []
     post:
       summary: Retrieve Common Document Fields
@@ -1072,7 +1072,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/types:
+  /api/{version}/metadata/objects/documents/types:
     parameters: []
     get:
       summary: Retrieve All Document Types
@@ -1104,9 +1104,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/types/:{type}:
+  /api/{version}/metadata/objects/documents/types/{type}:
     parameters:
-      - name: "{type}"
+      - name: type
         in: path
         required: true
         description: The document type. See Retrieve Document Types.
@@ -1142,15 +1142,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/types/:{type}/subtypes/:{subtype}:
+  /api/{version}/metadata/objects/documents/types/{type}/subtypes/{subtype}:
     parameters:
-      - name: "{type}"
+      - name: type
         in: path
         required: true
         description: The document type. See Retrieve Document Types.
         schema:
           type: string
-      - name: "{subtype}"
+      - name: subtype
         in: path
         required: true
         description: The document subtype. See Retrieve Document Types.
@@ -1186,21 +1186,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/types/:{type}/subtypes/:{subtype}/classifications/:{classification}:
+  /api/{version}/metadata/objects/documents/types/{type}/subtypes/{subtype}/classifications/{classification}:
     parameters:
-      - name: "{type}"
+      - name: type
         in: path
         required: true
         description: The document type. See Retrieve Document Types.
         schema:
           type: string
-      - name: "{subtype}"
+      - name: subtype
         in: path
         required: true
         description: The document subtype. See Retrieve Document Types.
         schema:
           type: string
-      - name: "{classification}"
+      - name: classification
         in: path
         required: true
         description: The document classification. See Retrieve Document Types.
@@ -1236,7 +1236,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents:
+  /api/{version}/objects/documents:
     parameters: []
     get:
       summary: Retrieve All Documents
@@ -1362,9 +1362,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}:
+  /api/{version}/objects/documents/{doc_id}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -1524,9 +1524,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions:
+  /api/{version}/objects/documents/{doc_id}/versions:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -1562,21 +1562,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -1692,9 +1692,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/file:
+  /api/{version}/objects/documents/{doc_id}/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -1739,21 +1739,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/file:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -1789,21 +1789,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/thumbnail:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/thumbnail:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -1839,7 +1839,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/batch:
+  /api/{version}/objects/documents/batch:
     parameters: []
     post:
       summary: Create Multiple Documents
@@ -1983,7 +1983,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/batch/actions/reclassify:
+  /api/{version}/objects/documents/batch/actions/reclassify:
     parameters: []
     put:
       summary: Reclassify Multiple Documents
@@ -2036,7 +2036,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/versions/batch:
+  /api/{version}/objects/documents/versions/batch:
     parameters: []
     post:
       summary: Create Multiple Document Versions
@@ -2137,7 +2137,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/deletions/documents:
+  /api/{version}/objects/deletions/documents:
     parameters: []
     get:
       summary: Retrieve Deleted Document IDs
@@ -2195,7 +2195,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/lock:
+  /api/{version}/metadata/objects/documents/lock:
     parameters: []
     get:
       summary: Retrieve Document Lock Metadata
@@ -2227,9 +2227,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/lock:
+  /api/{version}/objects/documents/{doc_id}/lock:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -2325,7 +2325,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/batch/lock:
+  /api/{version}/objects/documents/batch/lock:
     parameters: []
     delete:
       summary: Undo Collaborative Authoring Checkout
@@ -2363,9 +2363,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/renditions:
+  /api/{version}/objects/documents/{doc_id}/renditions:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -2401,21 +2401,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/renditions:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/renditions:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -2451,15 +2451,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/renditions/:{rendition_type}:
+  /api/{version}/objects/documents/{doc_id}/renditions/{rendition_type}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{rendition_type}"
+      - name: rendition_type
         in: path
         required: true
         description: The document rendition type.
@@ -2605,27 +2605,27 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/renditions/:{rendition_type}:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/renditions/{rendition_type}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
         schema:
           type: string
-      - name: "{rendition_type}"
+      - name: rendition_type
         in: path
         required: true
         description: The document rendition type.
@@ -2763,7 +2763,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/renditions/batch:
+  /api/{version}/objects/documents/renditions/batch:
     parameters: []
     post:
       summary: Add Multiple Document Renditions
@@ -2868,7 +2868,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/batch/actions/rerender:
+  /api/{version}/objects/documents/batch/actions/rerender:
     parameters: []
     post:
       summary: Update Multiple Document Renditions
@@ -2906,9 +2906,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/attachments:
+  /api/{version}/objects/documents/{doc_id}/attachments:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -2980,21 +2980,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/version/:{major_version}/:{minor_version}/attachments:
+  /api/{version}/objects/documents/{doc_id}/version/{major_version}/{minor_version}/attachments:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -3030,15 +3030,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/attachments/:{attachment_id}/versions:
+  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}/versions:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
@@ -3074,33 +3074,33 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/attachments/:{attachment_id}/versions/:{attachment_version}:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/attachments/{attachment_id}/versions/{attachment_version}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The id of the document attachment to retrieve.
         schema:
           type: string
-      - name: "{attachment_version}"
+      - name: attachment_version
         in: path
         required: true
         description: >-
@@ -3138,15 +3138,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/attachments/:{attachment_id}:
+  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
@@ -3248,21 +3248,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/attachments/:{attachment_id}/versions/:{attachment_version}:
+  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}/versions/{attachment_version}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
         schema:
           type: string
-      - name: "{attachment_version}"
+      - name: attachment_version
         in: path
         required: true
         description: The attachment version__v field value.
@@ -3366,15 +3366,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/attachments/:{attachment_id}/file:
+  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
@@ -3410,21 +3410,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/attachments/:{attachment_id}/versions/:{attachment_version}/file:
+  /api/{version}/objects/documents/{doc_id}/attachments/{attachment_id}/versions/{attachment_version}/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
         schema:
           type: string
-      - name: "{attachment_version}"
+      - name: attachment_version
         in: path
         required: true
         description: The attachment version__v field value.
@@ -3460,33 +3460,33 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/attachments/:{attachment_id}/versions/:{attachment_version}/file:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/attachments/{attachment_id}/versions/{attachment_version}/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The id field value of the attachment.
         schema:
           type: string
-      - name: "{attachment_version}"
+      - name: attachment_version
         in: path
         required: true
         description: The version of the attachment.
@@ -3522,9 +3522,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/attachments/file:
+  /api/{version}/objects/documents/{doc_id}/attachments/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -3560,21 +3560,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/:{major_version}/:{minor_version}/attachments/file:
+  /api/{version}/objects/documents/{doc_id}/{major_version}/{minor_version}/attachments/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -3610,7 +3610,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/attachments/batch:
+  /api/{version}/objects/documents/attachments/batch:
     parameters: []
     delete:
       summary: Delete Multiple Document Attachments
@@ -3720,9 +3720,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/annotations/types/:{annotation_type}:
+  /api/{version}/metadata/objects/documents/annotations/types/{annotation_type}:
     parameters:
-      - name: "{annotation_type}"
+      - name: annotation_type
         in: path
         required: true
         description: >-
@@ -3786,9 +3786,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/annotations/placemarks/types/:{placemark_type}:
+  /api/{version}/metadata/objects/documents/annotations/placemarks/types/{placemark_type}:
     parameters:
-      - name: "{placemark_type}"
+      - name: placemark_type
         in: path
         required: true
         description: The name of the placemark type. For example, sticky__sys.
@@ -3824,9 +3824,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/annotations/references/types/:{reference_type}:
+  /api/{version}/metadata/objects/documents/annotations/references/types/{reference_type}:
     parameters:
-      - name: "{reference_type}"
+      - name: reference_type
         in: path
         required: true
         schema:
@@ -3861,7 +3861,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/annotations/batch:
+  /api/{version}/objects/documents/annotations/batch:
     parameters: []
     post:
       summary: Create Multiple Annotations
@@ -3979,7 +3979,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/annotations/replies/batch:
+  /api/{version}/objects/documents/annotations/replies/batch:
     parameters: []
     post:
       summary: Add Annotation Replies
@@ -4017,21 +4017,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/annotations:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -4128,27 +4128,27 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/annotations/:{annotation_id}:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/{annotation_id}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
         schema:
           type: string
-      - name: "{annotation_id}"
+      - name: annotation_id
         in: path
         required: true
         description: >-
@@ -4186,27 +4186,27 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/annotations/:{annotation_id}/replies:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/{annotation_id}/replies:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
         schema:
           type: string
-      - name: "{annotation_id}"
+      - name: annotation_id
         in: path
         required: true
         description: >-
@@ -4244,9 +4244,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/annotations/file:
+  /api/{version}/objects/documents/{doc_id}/annotations/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -4318,21 +4318,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/annotations/file:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/annotations/file:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -4404,9 +4404,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/anchors:
+  /api/{version}/objects/documents/{doc_id}/anchors:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -4442,21 +4442,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/doc-export-annotations-to-csv:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/doc-export-annotations-to-csv:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -4492,21 +4492,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/export-video-annotations:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/export-video-annotations:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The video document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The video document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The video document minor_version_number__v field value.
@@ -4546,9 +4546,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/types/:{type}/relationships:
+  /api/{version}/metadata/objects/documents/types/{type}/relationships:
     parameters:
-      - name: "{type}"
+      - name: type
         in: path
         required: true
         description: The document type. See Retrieve Document Types.
@@ -4584,21 +4584,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/relationships:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/relationships:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -4670,7 +4670,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/relationships/batch:
+  /api/{version}/objects/documents/relationships/batch:
     parameters: []
     post:
       summary: Create Multiple Document Relationships
@@ -4744,27 +4744,27 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/relationships/:{relationship_id}:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/relationships/{relationship_id}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
         schema:
           type: string
-      - name: "{relationship_id}"
+      - name: relationship_id
         in: path
         required: true
         description: The relationship id field value. See Retrieve Document Relationships.
@@ -4830,7 +4830,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/batch/actions/fileextract:
+  /api/{version}/objects/documents/batch/actions/fileextract:
     parameters: []
     post:
       summary: Export Documents
@@ -4895,7 +4895,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/versions/batch/actions/fileextract:
+  /api/{version}/objects/documents/versions/batch/actions/fileextract:
     parameters: []
     post:
       summary: Export Document Versions
@@ -4951,9 +4951,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/batch/actions/fileextract/:{job_id}/results:
+  /api/{version}/objects/documents/batch/actions/fileextract/{job_id}/results:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: >-
@@ -4991,7 +4991,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/events:
+  /api/{version}/metadata/objects/documents/events:
     parameters: []
     get:
       summary: Retrieve Document Event Types and Subtypes
@@ -5023,15 +5023,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/events/:{event_type}/types/:{event_subtype}:
+  /api/{version}/metadata/objects/documents/events/{event_type}/types/{event_subtype}:
     parameters:
-      - name: "{event_type}"
+      - name: event_type
         in: path
         required: true
         description: The event type. For example, distribution__v.
         schema:
           type: string
-      - name: "{event_subtype}"
+      - name: event_subtype
         in: path
         required: true
         description: The event subtype. For example, approved_email__v.
@@ -5067,21 +5067,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/versions/:{major_version}/:{minor_version}/events:
+  /api/{version}/objects/documents/{doc_id}/versions/{major_version}/{minor_version}/events:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The document major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The document minor_version_number__v field value.
@@ -5123,9 +5123,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/events:
+  /api/{version}/objects/documents/{doc_id}/events:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document id field value.
@@ -5161,7 +5161,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/documents/templates:
+  /api/{version}/metadata/objects/documents/templates:
     parameters: []
     get:
       summary: Retrieve Document Template Metadata
@@ -5193,7 +5193,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/templates:
+  /api/{version}/objects/documents/templates:
     parameters: []
     get:
       summary: Retrieve Document Template Collection
@@ -5297,9 +5297,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/templates/:{template_name}:
+  /api/{version}/objects/documents/templates/{template_name}:
     parameters:
-      - name: "{template_name}"
+      - name: template_name
         in: path
         required: true
         description: The document template name__v field value.
@@ -5395,9 +5395,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/templates/:{template_name}/file:
+  /api/{version}/objects/documents/templates/{template_name}/file:
     parameters:
-      - name: "{template_name}"
+      - name: template_name
         in: path
         required: true
         description: The document template name__v field value.
@@ -5433,7 +5433,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/query/documents/relationships/document_signature__sysr:
+  /api/{version}/metadata/query/documents/relationships/document_signature__sysr:
     parameters: []
     get:
       summary: Retrieve Document Signature Metadata
@@ -5465,7 +5465,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/query/archived_documents/relationships/document_signature__sysr:
+  /api/{version}/metadata/query/archived_documents/relationships/document_signature__sysr:
     parameters: []
     get:
       summary: Retrieve Archived Document Signature Metadata
@@ -5497,7 +5497,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/tokens:
+  /api/{version}/objects/documents/tokens:
     parameters: []
     post:
       summary: Document Tokens
@@ -5535,9 +5535,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}:
+  /api/{version}/objects/binders/{binder_id}:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
@@ -5677,9 +5677,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/versions:
+  /api/{version}/objects/binders/{binder_id}/versions:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
@@ -5715,21 +5715,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/versions/:{major_version}/:{minor_version}:
+  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The binder major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The binder minor_version_number__v field value.
@@ -5831,7 +5831,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders:
+  /api/{version}/objects/binders:
     parameters: []
     post:
       summary: Create Binder
@@ -5881,9 +5881,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/actions:
+  /api/{version}/objects/binders/{binder_id}/actions:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
@@ -5925,9 +5925,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/actions/export:
+  /api/{version}/objects/binders/{binder_id}/actions/export:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
@@ -6005,21 +6005,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/versions/:{major_version}/:{minor_version}/actions/export:
+  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}/actions/export:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The binder major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The binder minor_version_number__v field value.
@@ -6097,9 +6097,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/actions/export/:{job_id}/results:
+  /api/{version}/objects/binders/actions/export/{job_id}/results:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: >-
@@ -6137,27 +6137,27 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/versions/:{major_version}/:{minor_version}/relationships/:{relationship_id}:
+  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}/relationships/{relationship_id}:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The binder major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The binder minor_version_number__v field value.
         schema:
           type: string
-      - name: "{relationship_id}"
+      - name: relationship_id
         in: path
         required: true
         description: The binder relationship id field value.
@@ -6223,21 +6223,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/versions/:{major_version}/:{minor_version}/relationships:
+  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}/relationships:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The binder major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The binder minor_version_number__v field value.
@@ -6279,15 +6279,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/sections/:{section_id}:
+  /api/{version}/objects/binders/{binder_id}/sections/{section_id}:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{section_id}"
+      - name: section_id
         in: path
         required: true
         description: The binder node id field value.
@@ -6359,27 +6359,27 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/versions/:{major_version}/:{minor_version}/sections/:{section_id}:
+  /api/{version}/objects/binders/{binder_id}/versions/{major_version}/{minor_version}/sections/{section_id}:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The binder major_version_number__v field value.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The binder minor_version_number__v field value.
         schema:
           type: string
-      - name: "{section_id}"
+      - name: section_id
         in: path
         required: true
         description: >-
@@ -6418,9 +6418,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/sections:
+  /api/{version}/objects/binders/{binder_id}/sections:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
@@ -6462,15 +6462,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/sections/:{node_id}:
+  /api/{version}/objects/binders/{binder_id}/sections/{node_id}:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{node_id}"
+      - name: node_id
         in: path
         required: true
         description: The binder node id of the section.
@@ -6512,9 +6512,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/documents:
+  /api/{version}/objects/binders/{binder_id}/documents:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
@@ -6556,15 +6556,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/documents/:{section_id}:
+  /api/{version}/objects/binders/{binder_id}/documents/{section_id}:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{section_id}"
+      - name: section_id
         in: path
         required: true
         description: The binder node id field value.
@@ -6636,7 +6636,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/binders/templates:
+  /api/{version}/metadata/objects/binders/templates:
     parameters: []
     get:
       summary: Retrieve Binder Template Metadata
@@ -6668,7 +6668,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/binders/templates/bindernodes:
+  /api/{version}/metadata/objects/binders/templates/bindernodes:
     parameters: []
     get:
       summary: Retrieve Binder Template Node Metadata
@@ -6700,7 +6700,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/templates:
+  /api/{version}/objects/binders/templates:
     parameters: []
     get:
       summary: Retrieve Binder Template Collection
@@ -6804,9 +6804,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/templates/:{template_name}:
+  /api/{version}/objects/binders/templates/{template_name}:
     parameters:
-      - name: "{template_name}"
+      - name: template_name
         in: path
         required: true
         description: The binder template name__v field value.
@@ -6872,9 +6872,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/templates/:{template_name}/bindernodes:
+  /api/{version}/objects/binders/templates/{template_name}/bindernodes:
     parameters:
-      - name: "{template_name}"
+      - name: template_name
         in: path
         required: true
         description: The binder template name__v field value.
@@ -6982,9 +6982,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/binding_rule:
+  /api/{version}/objects/binders/{binder_id}/binding_rule:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
@@ -7026,15 +7026,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/sections/:{node_id}/binding_rule:
+  /api/{version}/objects/binders/{binder_id}/sections/{node_id}/binding_rule:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{node_id}"
+      - name: node_id
         in: path
         required: true
         description: The binder node id field value.
@@ -7076,15 +7076,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/documents/:{node_id}/binding_rule:
+  /api/{version}/objects/binders/{binder_id}/documents/{node_id}/binding_rule:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The binder id field value.
         schema:
           type: string
-      - name: "{node_id}"
+      - name: node_id
         in: path
         required: true
         description: The binder node id field value.
@@ -7126,7 +7126,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/configuration/Objecttype:
+  /api/{version}/configuration/Objecttype:
     parameters: []
     get:
       summary: Retrieve Details from All Object Types
@@ -7158,9 +7158,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/configuration/:{object_name_and_object_type}:
+  /api/{version}/configuration/{object_name_and_object_type}:
     parameters:
-      - name: "{object_name_and_object_type}"
+      - name: object_name_and_object_type
         in: path
         required: true
         description: >-
@@ -7207,9 +7207,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/actions/changetype:
+  /api/{version}/vobjects/{object_name}/actions/changetype:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The name of the object.
@@ -7251,21 +7251,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{id}/roles/:{role_name}:
+  /api/{version}/vobjects/{object_name}/{id}/roles/{role_name}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The object name.
         schema:
           type: string
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The id of the document, binder, or object record.
         schema:
           type: string
-      - name: "{role_name}"
+      - name: role_name
         in: path
         required: true
         description: >-
@@ -7303,9 +7303,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/roles:
+  /api/{version}/vobjects/{object_name}/roles:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The name of the object where you want to remove roles.
@@ -7383,9 +7383,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/vobjects/:{object_name}:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -7393,47 +7393,7 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-    get:
-      summary: Determine if Attachments are Enabled on an Object
-      parameters:
-        - name: Authorization
-          in: header
-          required: false
-          example: "{{sessionId}}"
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          required: false
-          example: application/json
-          schema:
-            type: string
-        - name: X-VaultAPI-ClientID
-          in: header
-          required: false
-          description: >-
-            Include a Client ID to identify this request. This ID appears in the
-            API Usage Logs, which is avaiable to download from Admin > Logs >
-            API Usage Logs or through the Vault REST API with the Download Daily
-            API Usage request. If omitted, the value will appear as `unknown` in
-            the API Usage Log.
-          example: "{{clientId}}"
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/attachments:
-    parameters:
-      - name: "{object_name}"
-        in: path
-        required: true
-        description: >-
-          The object name__v field value (product__v, country__v,
-          custom_object__c, etc.).
-        schema:
-          type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
@@ -7505,9 +7465,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/attachments/:{attachment_id}:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -7515,13 +7475,13 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
@@ -7629,9 +7589,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/attachments/:{attachment_id}/versions:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -7639,13 +7599,13 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
@@ -7681,9 +7641,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/attachments/:{attachment_id}/versions/:{attachment_version}:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions/{attachment_version}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -7691,19 +7651,19 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
         schema:
           type: string
-      - name: "{attachment_version}"
+      - name: attachment_version
         in: path
         required: true
         description: The attachment version__v field value.
@@ -7811,9 +7771,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/attachments/:{attachment_id}/versions/:{attachment_version}/file:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/{attachment_id}/versions/{attachment_version}/file:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -7821,19 +7781,19 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
         schema:
           type: string
-      - name: "{attachment_id}"
+      - name: attachment_id
         in: path
         required: true
         description: The attachment id field value.
         schema:
           type: string
-      - name: "{attachment_version}"
+      - name: attachment_version
         in: path
         required: true
         schema:
@@ -7868,9 +7828,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/attachments/file:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/attachments/file:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -7878,7 +7838,7 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
@@ -7914,9 +7874,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/attachments/batch:
+  /api/{version}/vobjects/{object_name}/attachments/batch:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -8040,7 +8000,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/vobjects/{object_name}/page_layouts:
+  /api/{version}/metadata/vobjects/{object_name}/page_layouts:
     parameters:
       - name: object_name
         in: path
@@ -8077,7 +8037,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/vobjects/{object_name}/page_layouts/{layout_name}:
+  /api/{version}/metadata/vobjects/{object_name}/page_layouts/{layout_name}:
     parameters:
       - name: object_name
         in: path
@@ -8121,9 +8081,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/actions/merge:
+  /api/{version}/vobjects/{object_name}/actions/merge:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -8179,9 +8139,9 @@ paths:
                     type: string
                   main_record_id:
                     type: string
-  /api/{{version}}/vobjects/merges/:{job_id}/status:
+  /api/{version}/vobjects/merges/{job_id}/status:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: >-
@@ -8220,9 +8180,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/merges/:{job_id}/results:
+  /api/{version}/vobjects/merges/{job_id}/results:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: >-
@@ -8261,9 +8221,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/merges/:{job_id}/log:
+  /api/{version}/vobjects/merges/{job_id}/log:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: >-
@@ -8302,21 +8262,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/attachment_fields/:{attachment_field_name}/file:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/attachment_fields/{attachment_field_name}/file:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The object name__v field value. For example, product__v.
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
         schema:
           type: string
-      - name: "{attachment_field_name}"
+      - name: attachment_field_name
         in: path
         required: true
         description: The name of the Attachment field to update.
@@ -8382,15 +8342,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/attachment_fields/file:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/attachment_fields/file:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The object name__v field value. For example, product__v.
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
@@ -8426,9 +8386,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/actions/recalculaterollups:
+  /api/{version}/vobjects/{object_name}/actions/recalculaterollups:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -8496,7 +8456,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/vobjects/{object_name}:
+  /api/{version}/metadata/vobjects/{object_name}:
     parameters:
       - name: object_name
         in: path
@@ -8545,7 +8505,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/vobjects/{object_name}/fields/{object_field_name}:
+  /api/{version}/metadata/vobjects/{object_name}/fields/{object_field_name}:
     parameters:
       - name: object_name
         in: path
@@ -8600,7 +8560,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/vobjects:
+  /api/{version}/metadata/vobjects:
     parameters: []
     get:
       summary: Retrieve Object Collection
@@ -8641,7 +8601,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/{object_name}:
+  /api/{version}/vobjects/{object_name}/{object_record_id}:
     parameters:
       - name: object_name
         in: path
@@ -8651,55 +8611,7 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-    get:
-      summary: Retrieve Object Record Collection
-      parameters:
-        - name: fields
-          in: query
-          required: false
-          description: >-
-            To specify fields to retrieve, include the parameter
-            fields={FIELD_NAMES}. See the next request below for details.
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          required: false
-          example: "{{sessionId}}"
-          schema:
-            type: string
-        - name: Accept
-          in: header
-          required: false
-          example: application/json
-          schema:
-            type: string
-        - name: X-VaultAPI-ClientID
-          in: header
-          required: false
-          description: >-
-            Include a Client ID to identify this request. This ID appears in the
-            API Usage Logs, which is avaiable to download from Admin > Logs >
-            API Usage Logs or through the Vault REST API with the Download Daily
-            API Usage request. If omitted, the value will appear as `unknown` in
-            the API Usage Log.
-          example: "{{clientId}}"
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}:
-    parameters:
-      - name: "{object_name}"
-        in: path
-        required: true
-        description: >-
-          The object name__v field value (product__v, country__v,
-          custom_object__c, etc.).
-        schema:
-          type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
@@ -8735,9 +8647,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}:
+  /api/{version}/vobjects/{object_name}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -8915,9 +8827,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/actions/cascadedelete:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/actions/cascadedelete:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -8925,7 +8837,7 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
@@ -8961,9 +8873,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/cascadedelete/results/:{object_name}/:{job_status}/:{job_id}:
+  /api/{version}/vobjects/cascadedelete/results/{object_name}/{job_status}/{job_id}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -8971,12 +8883,12 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{job_status}"
+      - name: job_status
         in: path
         required: true
         schema:
           type: string
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         schema:
@@ -9011,9 +8923,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/actions/deepcopy:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/actions/deepcopy:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -9021,7 +8933,7 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
@@ -9063,9 +8975,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/deepcopy/results/:{object_name}/:{job_status}/:{job_id}:
+  /api/{version}/vobjects/deepcopy/results/{object_name}/{job_status}/{job_id}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -9073,13 +8985,13 @@ paths:
           custom_object__c, etc.).
         schema:
           type: string
-      - name: "{job_status}"
+      - name: job_status
         in: path
         required: true
         description: The ID of the job, retrieved from the response of the job request.
         schema:
           type: string
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: >-
@@ -9117,9 +9029,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/deletions/vobjects/:{object_name}:
+  /api/{version}/objects/deletions/vobjects/{object_name}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -9157,7 +9069,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/limits:
+  /api/{version}/limits:
     parameters: []
     get:
       summary: Retrieve Limits on Objects
@@ -9189,9 +9101,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/actions/updatecorporatecurrency:
+  /api/{version}/vobjects/{object_name}/actions/updatecorporatecurrency:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: >-
@@ -9235,9 +9147,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{id}/roles:
+  /api/{version}/objects/documents/{id}/roles:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         schema:
@@ -9308,15 +9220,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{id}/roles/:{role_name}:
+  /api/{version}/objects/documents/{id}/roles/{role_name}:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The document `id`.
         schema:
           type: string
-      - name: "{role_name}"
+      - name: role_name
         in: path
         required: true
         description: The name of the role to retrieve. For example, `owner__v`.
@@ -9352,7 +9264,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/roles/batch:
+  /api/{version}/objects/documents/roles/batch:
     parameters: []
     post:
       summary: Assign Users & Groups to Roles on Multiple Documents & Binders
@@ -9426,15 +9338,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/roles/:{role_name_and_user_or_group}/:{id}:
+  /api/{version}/objects/documents/{doc_id}/roles/{role_name_and_user_or_group}/{id}:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The id value of the document from which to remove roles.
         schema:
           type: string
-      - name: "{role_name_and_user_or_group}"
+      - name: role_name_and_user_or_group
         in: path
         required: true
         description: >-
@@ -9443,7 +9355,7 @@ paths:
           `{role_name}.{user_or_group}`. For example, `consumer__v.user`.
         schema:
           type: string
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The id value of the user or group to remove from the role.
@@ -9479,9 +9391,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{id}/roles:
+  /api/{version}/objects/binders/{id}/roles:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         schema:
@@ -9552,15 +9464,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{id}/roles/:{role_name}:
+  /api/{version}/objects/binders/{id}/roles/{role_name}:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The binder `id`.
         schema:
           type: string
-      - name: "{role_name}"
+      - name: role_name
         in: path
         required: true
         description: The name of the role to retrieve. For example, `owner__v`.
@@ -9596,15 +9508,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{binder_id}/roles/:{role_name_and_user_or_group}/:{id}:
+  /api/{version}/objects/binders/{binder_id}/roles/{role_name_and_user_or_group}/{id}:
     parameters:
-      - name: "{binder_id}"
+      - name: binder_id
         in: path
         required: true
         description: The id value of the binder from which to remove roles.
         schema:
           type: string
-      - name: "{role_name_and_user_or_group}"
+      - name: role_name_and_user_or_group
         in: path
         required: true
         description: >-
@@ -9613,7 +9525,7 @@ paths:
           `{role_name}.{user_or_group}`. For example, `consumer__v.user`.
         schema:
           type: string
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The id value of the user or group to remove from the role.
@@ -9649,7 +9561,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks:
+  /api/{version}/objects/objectworkflows/tasks:
     parameters: []
     get:
       summary: Retrieve Workflow Tasks
@@ -9750,9 +9662,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -9797,9 +9709,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -9835,15 +9747,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/:{task_action}:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/{task_action}:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
         schema:
           type: string
-      - name: "{task_action}"
+      - name: task_action
         in: path
         required: true
         description: >-
@@ -9889,9 +9801,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/mdwaccept:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/mdwaccept:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -9933,9 +9845,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/accept:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/accept:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -9977,9 +9889,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/undoaccept:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/undoaccept:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -10021,9 +9933,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/mdwcomplete:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/mdwcomplete:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -10065,9 +9977,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/complete:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/complete:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -10109,9 +10021,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/mdwreassign:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/mdwreassign:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The id of the task to reassign.
@@ -10153,9 +10065,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/reassign:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/reassign:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The id of the task to reassign.
@@ -10197,9 +10109,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/updateduedate:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/updateduedate:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The id of the task.
@@ -10241,9 +10153,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/cancel:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/cancel:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -10285,9 +10197,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/tasks/:{task_id}/actions/mdwmanagecontent:
+  /api/{version}/objects/objectworkflows/tasks/{task_id}/actions/mdwmanagecontent:
     parameters:
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The task id field value.
@@ -10329,7 +10241,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/object/workflow/actions:
+  /api/{version}/object/workflow/actions:
     parameters: []
     get:
       summary: Retrieve Bulk Workflow Actions
@@ -10361,7 +10273,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/object/workflow/actions/{action}:
+  /api/{version}/object/workflow/actions/{action}:
     parameters:
       - name: action
         in: path
@@ -10434,7 +10346,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/object/workflow/actions/cancelworkflows:
+  /api/{version}/object/workflow/actions/cancelworkflows:
     parameters: []
     post:
       summary: Cancel Workflows
@@ -10472,7 +10384,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/object/workflow/actions/canceltasks:
+  /api/{version}/object/workflow/actions/canceltasks:
     parameters: []
     post:
       summary: Cancel Workflow Tasks
@@ -10510,7 +10422,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/object/workflow/actions/reassigntasks:
+  /api/{version}/object/workflow/actions/reassigntasks:
     parameters: []
     post:
       summary: Reassign Workflow Tasks
@@ -10548,7 +10460,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/object/workflow/actions/replaceworkflowowner:
+  /api/{version}/object/workflow/actions/replaceworkflowowner:
     parameters: []
     post:
       summary: Replace Workflow Owner
@@ -10586,7 +10498,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows:
+  /api/{version}/objects/objectworkflows:
     parameters: []
     get:
       summary: Retrieve Workflows
@@ -10695,9 +10607,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/:{workflow_id}:
+  /api/{version}/objects/objectworkflows/{workflow_id}:
     parameters:
-      - name: "{workflow_id}"
+      - name: workflow_id
         in: path
         required: true
         description: The workflow id field value.
@@ -10742,9 +10654,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/:{workflow_id}/actions:
+  /api/{version}/objects/objectworkflows/{workflow_id}/actions:
     parameters:
-      - name: "{workflow_id}"
+      - name: workflow_id
         in: path
         required: true
         description: The workflow id field value.
@@ -10788,15 +10700,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/:{workflow_id}/actions/:{workflow_action}:
+  /api/{version}/objects/objectworkflows/{workflow_id}/actions/{workflow_action}:
     parameters:
-      - name: "{workflow_id}"
+      - name: workflow_id
         in: path
         required: true
         description: The workflow id field value.
         schema:
           type: string
-      - name: "{workflow_action}"
+      - name: workflow_action
         in: path
         required: true
         description: The workflow action name retrieved from Retrieve Workflow Actions.
@@ -10881,9 +10793,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{id}/versions/:{major_version}/:{minor_version}/lifecycle_actions:
+  /api/{version}/objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -10891,13 +10803,13 @@ paths:
           actions.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The major version number of the document.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The minor version number of the document.
@@ -10933,7 +10845,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/lifecycle_actions:
+  /api/{version}/objects/documents/lifecycle_actions:
     parameters: []
     post:
       summary: Retrieve User Actions on Multiple Documents
@@ -10971,9 +10883,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{id}/versions/:{major_version}/:{minor_version}/lifecycle_actions/:{name__v}/entry_requirements:
+  /api/{version}/objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}/entry_requirements:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -10981,19 +10893,19 @@ paths:
           actions.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The major version number of the document.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The minor version number of the document.
         schema:
           type: string
-      - name: "{name__v}"
+      - name: name__v
         in: path
         required: true
         description: >-
@@ -11032,9 +10944,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{id}/versions/:{major_version}/:{minor_version}/lifecycle_actions/:{name__v}:
+  /api/{version}/objects/documents/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -11042,19 +10954,19 @@ paths:
           actions.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The major version number of the document.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The minor version number of the document.
         schema:
           type: string
-      - name: "{name__v}"
+      - name: name__v
         in: path
         required: true
         description: >-
@@ -11098,9 +11010,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/actions/:{lifecycle_and_state_and_action}/:{job_id}/results:
+  /api/{version}/objects/documents/actions/{lifecycle_and_state_and_action}/{job_id}/results:
     parameters:
-      - name: "{lifecycle_and_state_and_action}"
+      - name: lifecycle_and_state_and_action
         in: path
         required: true
         description: >-
@@ -11111,7 +11023,7 @@ paths:
           and find the `href` under the `artifacts` link.
         schema:
           type: string
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         schema:
@@ -11146,9 +11058,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/lifecycle_actions/:{user_action_name}:
+  /api/{version}/objects/documents/lifecycle_actions/{user_action_name}:
     parameters:
-      - name: "{user_action_name}"
+      - name: user_action_name
         in: path
         required: true
         description: >-
@@ -11192,9 +11104,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{id}/versions/:{major_version}/:{minor_version}/lifecycle_actions:
+  /api/{version}/objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -11202,13 +11114,13 @@ paths:
           actions.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The major version number of the binder.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The minor version number of the binder.
@@ -11244,7 +11156,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/lifecycle_actions:
+  /api/{version}/objects/binders/lifecycle_actions:
     parameters: []
     post:
       summary: Retrieve User Actions on Multiple Binders
@@ -11282,9 +11194,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{id}/versions/:{major_version}/:{minor_version}/lifecycle_actions/:{name__v}/entry_requirements:
+  /api/{version}/objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}/entry_requirements:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -11292,19 +11204,19 @@ paths:
           actions.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The major version number of the binder.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The minor version number of the binder.
         schema:
           type: string
-      - name: "{name__v}"
+      - name: name__v
         in: path
         required: true
         description: >-
@@ -11343,9 +11255,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/:{id}/versions/:{major_version}/:{minor_version}/lifecycle_actions/:{name__v}:
+  /api/{version}/objects/binders/{id}/versions/{major_version}/{minor_version}/lifecycle_actions/{name__v}:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -11353,19 +11265,19 @@ paths:
           actions.
         schema:
           type: string
-      - name: "{major_version}"
+      - name: major_version
         in: path
         required: true
         description: The major version number of the binder.
         schema:
           type: string
-      - name: "{minor_version}"
+      - name: minor_version
         in: path
         required: true
         description: The minor version number of the binder.
         schema:
           type: string
-      - name: "{name__v}"
+      - name: name__v
         in: path
         required: true
         description: >-
@@ -11409,9 +11321,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/binders/lifecycle_actions/:{user_action_name}:
+  /api/{version}/objects/binders/lifecycle_actions/{user_action_name}:
     parameters:
-      - name: "{user_action_name}"
+      - name: user_action_name
         in: path
         required: true
         description: >-
@@ -11455,7 +11367,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/configuration/role_assignment_rule:
+  /api/{version}/configuration/role_assignment_rule:
     parameters: []
     get:
       summary: Retrieve Lifecycle Role Assignment Rules (Default & Override)
@@ -11645,7 +11557,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/actions:
+  /api/{version}/objects/documents/actions:
     parameters: []
     get:
       summary: Retrieve All Document Workflows
@@ -11686,9 +11598,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/actions/:{workflow_name}:
+  /api/{version}/objects/documents/actions/{workflow_name}:
     parameters:
-      - name: "{workflow_name}"
+      - name: workflow_name
         in: path
         required: true
         description: The document workflow name value.
@@ -11769,15 +11681,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/actions:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/actions:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The object name__v field value.
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value.
@@ -11822,21 +11734,21 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/actions/:{action_name}:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/actions/{action_name}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The object name__v field value.
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value from which to retrieve user actions.
         schema:
           type: string
-      - name: "{action_name}"
+      - name: action_name
         in: path
         required: true
         description: >-
@@ -11912,15 +11824,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/actions/:{action_name}:
+  /api/{version}/vobjects/{object_name}/actions/{action_name}:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The object name__v field value.
         schema:
           type: string
-      - name: "{action_name}"
+      - name: action_name
         in: path
         required: true
         description: >-
@@ -11966,7 +11878,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/actions:
+  /api/{version}/objects/objectworkflows/actions:
     parameters: []
     get:
       summary: Retrieve All Multi-Record Workflows
@@ -11998,7 +11910,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/objectworkflows/actions/{workflow_name}:
+  /api/{version}/objects/objectworkflows/actions/{workflow_name}:
     parameters:
       - name: workflow_name
         in: path
@@ -12065,7 +11977,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users:
+  /api/{version}/objects/users:
     parameters: []
     post:
       summary: Create Single User
@@ -12139,9 +12051,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users/:{id}:
+  /api/{version}/objects/users/{id}:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -12227,7 +12139,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/users:
+  /api/{version}/metadata/objects/users:
     parameters: []
     get:
       summary: Retrieve User Metadata
@@ -12259,7 +12171,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users/:
+  /api/{version}/objects/users/:
     parameters: []
     get:
       summary: Retrieve All Users
@@ -12315,9 +12227,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users/:{user_id}:
+  /api/{version}/objects/users/{user_id}:
     parameters:
-      - name: "{user_id}"
+      - name: user_id
         in: path
         required: true
         description: "The user id field value. "
@@ -12362,7 +12274,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users/me/password:
+  /api/{version}/objects/users/me/password:
     parameters: []
     post:
       summary: Change My Password
@@ -12400,15 +12312,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users/:{user_id}/vault_membership/:{vault_id}:
+  /api/{version}/objects/users/{user_id}/vault_membership/{vault_id}:
     parameters:
-      - name: "{user_id}"
+      - name: user_id
         in: path
         required: true
         description: The user id field value.
         schema:
           type: string
-      - name: "{vault_id}"
+      - name: vault_id
         in: path
         required: true
         description: >-
@@ -12452,7 +12364,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/licenses:
+  /api/{version}/objects/licenses:
     parameters: []
     get:
       summary: Retrieve Application License Usage
@@ -12484,9 +12396,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users/:{id}/permissions:
+  /api/{version}/objects/users/{id}/permissions:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -12533,7 +12445,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/users/me/permissions:
+  /api/{version}/objects/users/me/permissions:
     parameters: []
     get:
       summary: Retrieve My User Permissions
@@ -12574,7 +12486,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/ServiceProviderConfig:
+  /api/{version}/scim/v2/ServiceProviderConfig:
     parameters: []
     get:
       summary: Retrieve SCIM Provider
@@ -12606,7 +12518,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/Schemas:
+  /api/{version}/scim/v2/Schemas:
     parameters: []
     get:
       summary: Retrieve All SCIM Schema Information
@@ -12638,9 +12550,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/Schemas/:{id}:
+  /api/{version}/scim/v2/Schemas/{id}:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -12678,7 +12590,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/ResourceTypes:
+  /api/{version}/scim/v2/ResourceTypes:
     parameters: []
     get:
       summary: Retrieve All SCIM Resource Types
@@ -12710,9 +12622,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/ResourceTypes/:{type}:
+  /api/{version}/scim/v2/ResourceTypes/{type}:
     parameters:
-      - name: "{type}"
+      - name: type
         in: path
         required: true
         description: >-
@@ -12751,7 +12663,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/Users:
+  /api/{version}/scim/v2/Users:
     parameters: []
     get:
       summary: Retrieve All Users with SCIM
@@ -12895,9 +12807,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/Users/:{id}:
+  /api/{version}/scim/v2/Users/{id}:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The id of the user you wish to update.
@@ -13000,7 +12912,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/Me:
+  /api/{version}/scim/v2/Me:
     parameters: []
     get:
       summary: Retrieve Current User with SCIM
@@ -13110,9 +13022,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/:{type}:
+  /api/{version}/scim/v2/{type}:
     parameters:
-      - name: "{type}"
+      - name: type
         in: path
         required: true
         description: >-
@@ -13218,9 +13130,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/scim/v2/:{type}/:{id}:
+  /api/{version}/scim/v2/{type}/{id}:
     parameters:
-      - name: "{type}"
+      - name: type
         in: path
         required: true
         description: >-
@@ -13229,7 +13141,7 @@ paths:
           for this parameter is the endpoint value.
         schema:
           type: string
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: >-
@@ -13289,7 +13201,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/groups:
+  /api/{version}/metadata/objects/groups:
     parameters: []
     get:
       summary: Retrieve Group Metadata
@@ -13321,7 +13233,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/groups:
+  /api/{version}/objects/groups:
     parameters: []
     get:
       summary: Retrieve All Groups
@@ -13400,7 +13312,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/groups/auto:
+  /api/{version}/objects/groups/auto:
     parameters: []
     get:
       summary: Retrieve Auto Managed Groups
@@ -13451,9 +13363,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/groups/:{group_id}:
+  /api/{version}/objects/groups/{group_id}:
     parameters:
-      - name: "{group_id}"
+      - name: group_id
         in: path
         required: true
         description: The group id field value.
@@ -13567,7 +13479,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/picklists:
+  /api/{version}/objects/picklists:
     parameters: []
     get:
       summary: Retrieve All Picklists
@@ -13599,9 +13511,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/picklists/:{picklist_name}:
+  /api/{version}/objects/picklists/{picklist_name}:
     parameters:
-      - name: "{picklist_name}"
+      - name: picklist_name
         in: path
         required: true
         description: >-
@@ -13711,9 +13623,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/picklists/:{picklist_name}/:{picklist_value_name}:
+  /api/{version}/objects/picklists/{picklist_name}/{picklist_value_name}:
     parameters:
-      - name: "{picklist_name}"
+      - name: picklist_name
         in: path
         required: true
         description: >-
@@ -13721,7 +13633,7 @@ paths:
           region__c, etc.)
         schema:
           type: string
-      - name: "{picklist_value_name}"
+      - name: picklist_value_name
         in: path
         required: true
         description: >-
@@ -13795,7 +13707,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/edl_item__v/actions/createplaceholder:
+  /api/{version}/vobjects/edl_item__v/actions/createplaceholder:
     parameters: []
     post:
       summary: Create a Placeholder from an EDL Item
@@ -13833,7 +13745,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/composites/trees/{edl_hierarchy_or_template}:
+  /api/{version}/composites/trees/{edl_hierarchy_or_template}:
     parameters:
       - name: edl_hierarchy_or_template
         in: path
@@ -13876,7 +13788,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/composites/trees/{edl_hierarchy_or_template}/actions/listnodes:
+  /api/{version}/composites/trees/{edl_hierarchy_or_template}/actions/listnodes:
     parameters:
       - name: edl_hierarchy_or_template
         in: path
@@ -13920,9 +13832,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/composites/trees/edl_hierarchy__v/:{parent_node_id}/children:
+  /api/{version}/composites/trees/edl_hierarchy__v/{parent_node_id}/children:
     parameters:
-      - name: "{parent_node_id}"
+      - name: parent_node_id
         in: path
         required: true
         description: The ID of a parent node in the hierarchy.
@@ -14000,7 +13912,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/edl_matched_documents/batch/actions/add:
+  /api/{version}/objects/edl_matched_documents/batch/actions/add:
     parameters: []
     post:
       summary: Add EDL Matched Documents
@@ -14038,7 +13950,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/edl_matched_documents/batch/actions/remove:
+  /api/{version}/objects/edl_matched_documents/batch/actions/remove:
     parameters: []
     post:
       summary: Remove EDL Matched Documents
@@ -14076,7 +13988,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/objects/securitypolicies:
+  /api/{version}/metadata/objects/securitypolicies:
     parameters: []
     get:
       summary: Retrieve Security Policy Metadata
@@ -14108,7 +14020,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/securitypolicies:
+  /api/{version}/objects/securitypolicies:
     parameters: []
     get:
       summary: Retrieve All Security Policies
@@ -14140,9 +14052,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/securitypolicies/:{security_policy_name}:
+  /api/{version}/objects/securitypolicies/{security_policy_name}:
     parameters:
-      - name: "{security_policy_name}"
+      - name: security_policy_name
         in: path
         required: true
         description: >-
@@ -14180,7 +14092,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/domain:
+  /api/{version}/objects/domain:
     parameters: []
     get:
       summary: Retrieve Domain Information
@@ -14228,7 +14140,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/domains:
+  /api/{version}/objects/domains:
     parameters: []
     get:
       summary: Retrieve Domains
@@ -14266,7 +14178,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/package:
+  /api/{version}/services/package:
     parameters: []
     post:
       summary: Export Package
@@ -14334,9 +14246,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobject/vault_package__v/:{package_id}/actions/deploy:
+  /api/{version}/vobject/vault_package__v/{package_id}/actions/deploy:
     parameters:
-      - name: "{package_id}"
+      - name: package_id
         in: path
         required: true
         description: >-
@@ -14380,9 +14292,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobject/vault_package__v/:{package_id}/actions/deploy/results:
+  /api/{version}/vobject/vault_package__v/{package_id}/actions/deploy/results:
     parameters:
-      - name: "{package_id}"
+      - name: package_id
         in: path
         required: true
         description: >-
@@ -14420,9 +14332,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/outbound_package__v/:{package_id}/dependencies:
+  /api/{version}/vobjects/outbound_package__v/{package_id}/dependencies:
     parameters:
-      - name: "{package_id}"
+      - name: package_id
         in: path
         required: true
         description: >-
@@ -14460,7 +14372,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/query/components:
+  /api/{version}/query/components:
     parameters: []
     post:
       summary: Component Definition Query
@@ -14498,7 +14410,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/vault/actions/compare:
+  /api/{version}/objects/vault/actions/compare:
     parameters: []
     post:
       summary: Vault Compare
@@ -14530,7 +14442,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/vault/actions/configreport:
+  /api/{version}/objects/vault/actions/configreport:
     parameters: []
     post:
       summary: Vault Configuration Report
@@ -14562,7 +14474,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/package/actions/validate:
+  /api/{version}/services/package/actions/validate:
     parameters: []
     post:
       summary: Validate Package
@@ -14594,7 +14506,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/configuration_mode/actions/enable:
+  /api/{version}/services/configuration_mode/actions/enable:
     parameters: []
     post:
       summary: Enable Configuration Mode
@@ -14631,7 +14543,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/configuration_mode/actions/disable:
+  /api/{version}/services/configuration_mode/actions/disable:
     parameters: []
     post:
       summary: Disable Configuration Mode
@@ -14668,7 +14580,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/actions/buildproduction:
+  /api/{version}/objects/sandbox/actions/buildproduction:
     parameters: []
     post:
       summary: Build Production Vault
@@ -14706,7 +14618,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/actions/promoteproduction:
+  /api/{version}/objects/sandbox/actions/promoteproduction:
     parameters: []
     post:
       summary: Promote to Production
@@ -14744,7 +14656,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/snapshot:
+  /api/{version}/objects/sandbox/snapshot:
     parameters: []
     post:
       summary: Create Sandbox Snapshot
@@ -14812,9 +14724,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/snapshot/:{api_name}:
+  /api/{version}/objects/sandbox/snapshot/{api_name}:
     parameters:
-      - name: "{api_name}"
+      - name: api_name
         in: path
         required: true
         description: >-
@@ -14852,9 +14764,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/snapshot/:{api_name}/actions/update:
+  /api/{version}/objects/sandbox/snapshot/{api_name}/actions/update:
     parameters:
-      - name: "{api_name}"
+      - name: api_name
         in: path
         required: true
         description: >-
@@ -14892,9 +14804,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/snapshot/:{api_name}/actions/upgrade:
+  /api/{version}/objects/sandbox/snapshot/{api_name}/actions/upgrade:
     parameters:
-      - name: "{api_name}"
+      - name: api_name
         in: path
         required: true
         description: >-
@@ -14932,7 +14844,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox:
+  /api/{version}/objects/sandbox:
     parameters: []
     get:
       summary: Retrieve Sandboxes
@@ -15000,7 +14912,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/{vault_id}:
+  /api/{version}/objects/sandbox/{vault_id}:
     parameters:
       - name: vault_id
         in: path
@@ -15037,7 +14949,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/actions/recheckusage:
+  /api/{version}/objects/sandbox/actions/recheckusage:
     parameters: []
     post:
       summary: Recheck Sandbox Usage Limit
@@ -15075,7 +14987,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/batch/changesize:
+  /api/{version}/objects/sandbox/batch/changesize:
     parameters: []
     post:
       summary: Change Sandbox Size
@@ -15113,7 +15025,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/entitlements/set:
+  /api/{version}/objects/sandbox/entitlements/set:
     parameters: []
     post:
       summary: Set Sandbox Entitlements
@@ -15151,9 +15063,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/:{vault_id}/actions/refresh:
+  /api/{version}/objects/sandbox/{vault_id}/actions/refresh:
     parameters:
-      - name: "{vault_id}"
+      - name: vault_id
         in: path
         required: true
         description: The Vault ID of the sandbox to be refreshed.
@@ -15195,9 +15107,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/sandbox/:{name}:
+  /api/{version}/objects/sandbox/{name}:
     parameters:
-      - name: "{name}"
+      - name: name
         in: path
         required: true
         description: >-
@@ -15235,7 +15147,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/audittrail:
+  /api/{version}/metadata/audittrail:
     parameters: []
     get:
       summary: Retrieve Audit Types
@@ -15267,9 +15179,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/metadata/audittrail/:{audit_trail_type}:
+  /api/{version}/metadata/audittrail/{audit_trail_type}:
     parameters:
-      - name: "{audit_trail_type}"
+      - name: audit_trail_type
         in: path
         required: true
         description: >-
@@ -15307,9 +15219,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/audittrail/:{audit_trail_type}:
+  /api/{version}/audittrail/{audit_trail_type}:
     parameters:
-      - name: "{audit_trail_type}"
+      - name: audit_trail_type
         in: path
         required: true
         description: >-
@@ -15430,9 +15342,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/objects/documents/:{doc_id}/audittrail:
+  /api/{version}/objects/documents/{doc_id}/audittrail:
     parameters:
-      - name: "{doc_id}"
+      - name: doc_id
         in: path
         required: true
         description: The document ID for which to retrieve audit history.
@@ -15525,15 +15437,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/vobjects/:{object_name}/:{object_record_id}/audittrail:
+  /api/{version}/vobjects/{object_name}/{object_record_id}/audittrail:
     parameters:
-      - name: "{object_name}"
+      - name: object_name
         in: path
         required: true
         description: The object name__v field value.
         schema:
           type: string
-      - name: "{object_record_id}"
+      - name: object_record_id
         in: path
         required: true
         description: The object record id field value from which to retrieve user actions.
@@ -15626,7 +15538,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/logs/code/debug:
+  /api/{version}/logs/code/debug:
     parameters: []
     get:
       summary: Retrieve All Debug Logs
@@ -15713,9 +15625,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/logs/code/debug/:{id}:
+  /api/{version}/logs/code/debug/{id}:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The ID of the debug log to retrieve.
@@ -15751,9 +15663,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/logs/code/debug/:{id}/files:
+  /api/{version}/logs/code/debug/{id}/files:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The ID of the debug log to download.
@@ -15789,9 +15701,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/logs/code/debug/:{id}/actions/reset:
+  /api/{version}/logs/code/debug/{id}/actions/reset:
     parameters:
-      - name: "{id}"
+      - name: id
         in: path
         required: true
         description: The ID of the debug log to delete.
@@ -15857,7 +15769,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/code/profiler:
+  /api/{version}/code/profiler:
     parameters: []
     get:
       summary: Retrieve All Profiling Sessions
@@ -15925,9 +15837,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/code/profiler/:{session_name}:
+  /api/{version}/code/profiler/{session_name}:
     parameters:
-      - name: "{session_name}"
+      - name: session_name
         in: path
         required: true
         description: The name of the session, for example,  baseline__c.
@@ -15993,9 +15905,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/code/profiler/:{session_name}/actions/end:
+  /api/{version}/code/profiler/{session_name}/actions/end:
     parameters:
-      - name: "{session_name}"
+      - name: session_name
         in: path
         required: true
         description: The name of the session, for example,  baseline__c.
@@ -16031,9 +15943,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/code/profiler/:{session_name}/results:
+  /api/{version}/code/profiler/{session_name}/results:
     parameters:
-      - name: "{session_name}"
+      - name: session_name
         in: path
         required: true
         description: The name of the session, for example,  baseline__c.
@@ -16069,7 +15981,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/notifications/histories:
+  /api/{version}/notifications/histories:
     parameters: []
     get:
       summary: Retrieve Email Notification Histories
@@ -16170,7 +16082,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/logs/api_usage:
+  /api/{version}/logs/api_usage:
     parameters: []
     get:
       summary: Download Daily API Usage
@@ -16220,7 +16132,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/logs/code/runtime:
+  /api/{version}/logs/code/runtime:
     parameters: []
     get:
       summary: Download SDK Runtime Log
@@ -16268,7 +16180,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/file_staging/upload:
+  /api/{version}/services/file_staging/upload:
     parameters: []
     post:
       summary: Create Resumable Upload Session
@@ -16300,7 +16212,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/file_staging/upload/{upload_session_id}:
+  /api/{version}/services/file_staging/upload/{upload_session_id}:
     parameters:
       - name: upload_session_id
         in: path
@@ -16451,7 +16363,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/file_staging/upload/:
+  /api/{version}/services/file_staging/upload/:
     parameters: []
     get:
       summary: List Upload Sessions
@@ -16483,7 +16395,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/file_staging/upload/{upload_session_id}/parts:
+  /api/{version}/services/file_staging/upload/{upload_session_id}/parts:
     parameters:
       - name: upload_session_id
         in: path
@@ -16529,7 +16441,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/file_staging/items/{item}:
+  /api/{version}/services/file_staging/items/{item}:
     parameters:
       - name: item
         in: path
@@ -16664,7 +16576,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/file_staging/items/content/{item}:
+  /api/{version}/services/file_staging/items/content/{item}:
     parameters:
       - name: item
         in: path
@@ -16714,7 +16626,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/file_staging/items:
+  /api/{version}/services/file_staging/items:
     parameters: []
     post:
       summary: Create Folder or File
@@ -16752,7 +16664,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/loader/extract:
+  /api/{version}/services/loader/extract:
     parameters: []
     post:
       summary: Extract Data Files
@@ -16790,15 +16702,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/loader/:{job_id}/tasks/:{task_id}/results:
+  /api/{version}/services/loader/{job_id}/tasks/{task_id}/results:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: The id value of the requested extract job.
         schema:
           type: string
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The id value of the requested extract task.
@@ -16834,15 +16746,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/loader/:{job_id}/tasks/:{task_id}/results/renditions:
+  /api/{version}/services/loader/{job_id}/tasks/{task_id}/results/renditions:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: The id value of the requested extract job.
         schema:
           type: string
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The id value of the requested extract task.
@@ -16878,7 +16790,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/loader/load:
+  /api/{version}/services/loader/load:
     parameters: []
     post:
       summary: Load Data Objects
@@ -16916,15 +16828,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/loader/:{job_id}/tasks/:{task_id}/successlog:
+  /api/{version}/services/loader/{job_id}/tasks/{task_id}/successlog:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: The id value of the requested extract job.
         schema:
           type: string
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The id value of the requested extract task.
@@ -16960,15 +16872,15 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/loader/:{job_id}/tasks/:{task_id}/failurelog:
+  /api/{version}/services/loader/{job_id}/tasks/{task_id}/failurelog:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: The id value of the requested extract job.
         schema:
           type: string
-      - name: "{task_id}"
+      - name: task_id
         in: path
         required: true
         description: The id value of the requested extract task.
@@ -17004,9 +16916,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/messages/:{message_type}/language/:{lang}/actions/export:
+  /api/{version}/messages/{message_type}/language/{lang}/actions/export:
     parameters:
-      - name: "{message_type}"
+      - name: message_type
         in: path
         required: true
         description: >-
@@ -17014,7 +16926,7 @@ paths:
           notification_template_messages__sys, or user_account_messages__sys.
         schema:
           type: string
-      - name: "{lang}"
+      - name: lang
         in: path
         required: true
         description: >
@@ -17053,9 +16965,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/messages/:{message_type}/actions/import:
+  /api/{version}/messages/{message_type}/actions/import:
     parameters:
-      - name: "{message_type}"
+      - name: message_type
         in: path
         required: true
         description: >-
@@ -17093,9 +17005,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/jobs/:{job_id}/summary:
+  /api/{version}/services/jobs/{job_id}/summary:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: >-
@@ -17133,9 +17045,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/jobs/:{job_id}/errors:
+  /api/{version}/services/jobs/{job_id}/errors:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: >-
@@ -17173,9 +17085,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/jobs/:{job_id}:
+  /api/{version}/services/jobs/{job_id}:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: The ID of the job, returned from the original job request.
@@ -17211,9 +17123,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/jobs/:{job_id}/tasks:
+  /api/{version}/services/jobs/{job_id}/tasks:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: The ID of the SDK job, returned from the original job request.
@@ -17249,7 +17161,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/jobs/histories:
+  /api/{version}/services/jobs/histories:
     parameters: []
     get:
       summary: Retrieve Job Histories
@@ -17329,7 +17241,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/jobs/monitors:
+  /api/{version}/services/jobs/monitors:
     parameters: []
     get:
       summary: Retrieve Job Monitors
@@ -17410,9 +17322,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/jobs/start_now/:{job_id}:
+  /api/{version}/services/jobs/start_now/{job_id}:
     parameters:
-      - name: "{job_id}"
+      - name: job_id
         in: path
         required: true
         description: The ID of the scheduled job instance to start.
@@ -17448,7 +17360,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/queues:
+  /api/{version}/services/queues:
     parameters: []
     get:
       summary: Retrieve All Queues
@@ -17480,9 +17392,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/queues/:{queue_name}:
+  /api/{version}/services/queues/{queue_name}:
     parameters:
-      - name: "{queue_name}"
+      - name: queue_name
         in: path
         required: true
         description: The name of a specific queue. For example, queue__c.
@@ -17518,9 +17430,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/queues/:{queue_name}/actions/disable_delivery:
+  /api/{version}/services/queues/{queue_name}/actions/disable_delivery:
     parameters:
-      - name: "{queue_name}"
+      - name: queue_name
         in: path
         required: true
         description: The name of a specific Queue.
@@ -17556,9 +17468,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/queues/:{queue_name}/actions/enable_delivery:
+  /api/{version}/services/queues/{queue_name}/actions/enable_delivery:
     parameters:
-      - name: "{queue_name}"
+      - name: queue_name
         in: path
         required: true
         description: The name of a specific Queue.
@@ -17594,9 +17506,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/queues/:{queue_name}/actions/reset:
+  /api/{version}/services/queues/{queue_name}/actions/reset:
     parameters:
-      - name: "{queue_name}"
+      - name: queue_name
         in: path
         required: true
         description: The name of a specific Queue.
@@ -17632,9 +17544,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/code/:{class_name}:
+  /api/{version}/code/{class_name}:
     parameters:
-      - name: "{class_name}"
+      - name: class_name
         in: path
         required: true
         description: The fully qualified class name of your file.
@@ -17700,9 +17612,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/code/:{class_name}/enable:
+  /api/{version}/code/{class_name}/enable:
     parameters:
-      - name: "{class_name}"
+      - name: class_name
         in: path
         required: true
         description: The fully qualified class name of your file.
@@ -17744,9 +17656,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/code/:{class_name}/disable:
+  /api/{version}/code/{class_name}/disable:
     parameters:
-      - name: "{class_name}"
+      - name: class_name
         in: path
         required: true
         description: The fully qualified class name of your file.
@@ -17788,7 +17700,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/code:
+  /api/{version}/code:
     parameters: []
     put:
       summary: Add or Replace Single Source Code File
@@ -17826,9 +17738,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/vobject/vault_package__v/:{package_id}/actions/validate:
+  /api/{version}/services/vobject/vault_package__v/{package_id}/actions/validate:
     parameters:
-      - name: "{package_id}"
+      - name: package_id
         in: path
         required: true
         description: >-
@@ -17867,9 +17779,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/services/certificate/:{cert_id}:
+  /api/{version}/services/certificate/{cert_id}:
     parameters:
-      - name: "{cert_id}"
+      - name: cert_id
         in: path
         required: true
         description: >-
@@ -17907,7 +17819,7 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/uicode/distributions:
+  /api/{version}/uicode/distributions:
     parameters: []
     get:
       summary: Retrieve All Client Code Distribution Metadata
@@ -17975,9 +17887,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/uicode/distributions/:{distribution_name}:
+  /api/{version}/uicode/distributions/{distribution_name}:
     parameters:
-      - name: "{distribution_name}"
+      - name: distribution_name
         in: path
         required: true
         description: The name attribute of the client code distribution to delete.
@@ -18043,9 +17955,9 @@ paths:
       responses:
         "200":
           description: Success
-  /api/{{version}}/uicode/distributions/:{distribution_name}/code:
+  /api/{version}/uicode/distributions/{distribution_name}/code:
     parameters:
-      - name: "{distribution_name}"
+      - name: distribution_name
         in: path
         required: true
         description: The name attribute of the client code distribution to download.
